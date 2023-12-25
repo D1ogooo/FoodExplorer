@@ -72,7 +72,7 @@ export const Form = styled.form`
   background: ${({theme}) => theme.colors.Dark.dark900};
   padding-top: 0.1812rem;
   border: none;
-  font-family: 'Roboto';
+  font-family: 'Roboto', sans-serif;
   font-size: 1rem;
   font-style: normal;
   font-weight: 400;

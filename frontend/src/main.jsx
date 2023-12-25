@@ -7,9 +7,6 @@ import { ThemeProvider } from 'styled-components'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
  <React.StrictMode>
-   <ThemeProvider theme={theme}>
-    <App />
-    <GlobalStyle/>
-  </ThemeProvider>
+  <App />
  </React.StrictMode>,
 )

@@ -1,13 +1,20 @@
-import SignIn from "./pages/Sign in"
-import SignUp from './pages/Sign up'
+import { ThemeProvider } from 'styled-components'
+import { BrowserRouter } from 'react-router-dom'
+import { Router } from './routes'
+import { GlobalStyle } from './style/GlobalStyle'
+import { theme } from "./style/theme"
 
 function App() {
-  return (
-    <>
-     <SignIn />
-     <SignUp />
-    </>
-  )
+ return (
+  <>
+   <ThemeProvider theme={theme}>
+    <BrowserRouter>
+     <Router/>
+     <GlobalStyle/>
+    </BrowserRouter>
+   </ThemeProvider>
+  </>
+ )
 }
 
 export default App
