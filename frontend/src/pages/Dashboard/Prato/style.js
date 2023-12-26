@@ -1,30 +1,81 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-export const Container = styled.div`
- 
+export const PaiContainer = styled.div`
+ width: 90%;
+ margin: 0 auto;
 `
 
-export const Return = styled.div`
- img {
+export const Container = styled.div`
+ display: flex;
+ justify-content: center;
+ flex-direction: column;
+`
 
+export const Return = styled(Link)`
+ text-decoration: none;
+ display: flex;
+ margin-top: 1.625rem;
+ margin-bottom: 2.625rem;
+ 
+ img {
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
  }
  p {
-
+  color: ${({theme}) => theme.colors.Light.light300};
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 140%;
  }
 `
 
 export const Principal = styled.section`
- 
+ display: flex;
+ gap: 2.9375rem;
+ justify-content: center;
 `
 
+
 export const Left = styled.section`
+ 
  img {
   width: 100%;
-  height: auto;
+  height: 389px;
   flex-shrink: 0;
  }
 `
 
 export const Right = styled.section`
- 
+ display: flex;
+ width: 687px;
+ flex-direction: column;
+ align-items: flex-start;
+ gap: 24px;
+
+ h1 {
+  color: ${({theme}) => theme.colors.Light.light300};
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.5rem;
+  font-style: medium;
+  font-weight: 500;
+  line-height: 140%;
+ }
+
+ p {
+  align-self: stretch;
+  color: ${({theme}) => theme.colors.Light.light300};
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  font-style: regular;
+  font-weight: 300;
+  line-height: 140%;
+ }
+`
+
+export const Ingredientes = styled.div`
+ display: flex;
+ gap: 0.75rem;
 `

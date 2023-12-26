@@ -104,4 +104,10 @@ export const ButtonLoggout = styled.button`
   width: 2rem;
   height: 2rem;
  }
+
+ img:hover {
+  transition: 2ms all;
+  width: 2.2rem;
+  height: 2.2rem;
+ }
 `

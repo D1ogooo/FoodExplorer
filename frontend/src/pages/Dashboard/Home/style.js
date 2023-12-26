@@ -50,6 +50,10 @@ export const Right = styled.section`
 `
 
 export const SecondMainContainer = styled.section`
+ display: flex;
+ flex-direction: column;
+ align-items: start;
+
  h1 {
   margin-top: 3.9375rem;
   margin-bottom: 1.4375rem;
@@ -63,15 +67,38 @@ export const SecondMainContainer = styled.section`
 `
 
 export const ThirdMainContainer = styled.section`
- 
+h1 {
+   margin-top: 3.9375rem;
+   margin-bottom: 1.4375rem;
+   color: ${({theme}) => theme.colors.Light.light300};
+   font-family: 'Poppins', sans-serif;
+   font-size: 2rem;
+   font-style: normal;
+   font-weight: 500;
+   line-height: 140%;
+  }
 `
 
 export const FordMainContainer = styled.section`
- 
+  h1 {
+   margin-top: 3.9375rem;
+   margin-bottom: 1.4375rem;
+   color: ${({theme}) => theme.colors.Light.light300};
+   font-family: 'Poppins', sans-serif;
+   font-size: 2rem;
+   font-style: normal;
+   font-weight: 500;
+   line-height: 140%;
+  }
 `
 
 export const CardPai = styled.div`
+ display: flex;
+ width: 100%;
+ align-items: start;
+ justify-content: start;
  margin-bottom: 2.9375rem;
+ gap: 27px;
 
  h2 {
   color: ${({theme}) => theme.colors.Tints.cake200};
@@ -85,17 +112,32 @@ export const CardPai = styled.div`
 `
 
 export const Card = styled(Link)`
+ & {
+  text-decoration: none;
+  cursor: pointer;
+ }
+
  display: flex;
- width: 19rem;
- height: 28.875rem;
+ width: 20.9rem;
+ height: 500px;
  padding: 1.5rem;
  flex-direction: column;
  text-align: center;
- align-items: center;
  gap: 0.9375rem;
  border-radius: 0.5rem;
  background: ${({theme}) => theme.colors.Dark.dark200};
  border: 0.0625rem solid ${({theme}) => theme.colors.Dark.dark300};
+
+ h1 {
+  margin-top: -1px;
+  color: ${({theme}) => theme.colors.Light.light300};
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%;
+ }
 
  p {
   color: ${({theme}) => theme.colors.Light.light400};
@@ -109,12 +151,13 @@ export const Card = styled(Link)`
  }
 `
 
-export const FirstContentCard = styled.div`
+export const FirstContentCard = styled(Link)`
  display: flex;
- 
- :first-child {
+ justify-content: center;
+
+ #prato {
   width: 100%;
-  height: 100%;
+  height: 12.5rem;
   flex-shrink: 0;
  }
 

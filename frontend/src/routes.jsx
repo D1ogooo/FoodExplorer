@@ -8,12 +8,12 @@ import Prato from './pages/Dashboard/Prato'
 export function Router() {
  return (
   <>
-  <Routes>
-   <Route path='/' element={<Prato/>}/> 
+   <Routes>
     <Route path='/register' element={<SignUp/>}/>
     <Route path='/login' element={<SignIn/>}/>
    <Route path='/' element={<DefaultLayout/>}> //Rota padrão da dashboard
     <Route path='/dashboard' element={<Dashboard/>}/>
+    <Route path='/prato/:id' element={<Prato/>}/> 
    </Route>
   </Routes>
   </>

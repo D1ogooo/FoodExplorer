@@ -1,4 +1,6 @@
 import { Container } from './style'
+import AdicionarIcon from '../../assets/icons/Plus.svg'
+import DecrementarIcon from '../../assets/icons/Minus.svg'
 
 export const InspectValue = () => {
   return (
