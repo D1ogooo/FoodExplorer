@@ -8,9 +8,10 @@ export function Router() {
  return (
   <>
   <Routes>
-   <Route path='/' element={<SignIn/>}/> 
+   <Route path='/' element={<Dashboard/>}/> 
     <Route path='/register' element={<SignUp/>}/>
-    <Route path='/' element={<DefaultLayout/>}> //Rota padrão da dashboard
+    <Route path='/login' element={<SignIn/>}/>
+   <Route path='/' element={<DefaultLayout/>}> //Rota padrão da dashboard
     <Route path='/dashboard' element={<Dashboard/>}/>
    </Route>
   </Routes>

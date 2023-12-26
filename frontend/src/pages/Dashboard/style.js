@@ -61,6 +61,14 @@ export const SecondMainContainer = styled.section`
  }
 `
 
+export const ThirdMainContainer = styled.section`
+ 
+`
+
+export const FordMainContainer = styled.section`
+ 
+`
+
 export const CardPai = styled.div`
  margin-bottom: 2.9375rem;
 
