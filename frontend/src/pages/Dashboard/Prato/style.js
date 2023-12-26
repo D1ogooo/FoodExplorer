@@ -77,5 +77,23 @@ export const Right = styled.section`
 
 export const Ingredientes = styled.div`
  display: flex;
+ justify-content: center;
+ align-items: center;
  gap: 0.75rem;
+
+ div {
+  border-radius: 0.3125rem;
+  background: ${({theme}) => theme.colors.Dark.dark1000};
+  padding: 0.25rem 0.5rem;
+  
+  p {
+   color: ${({theme}) => theme.colors.Light.light100};
+   text-align: center;
+   font-family: 'Poppins', sans-serif;
+   font-size: 1.25rem;
+   font-style: medium;
+   font-weight: 100;
+   line-height: 171.429%;
+  }
+ }
 `

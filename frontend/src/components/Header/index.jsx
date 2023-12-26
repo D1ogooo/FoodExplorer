@@ -1,5 +1,5 @@
 import { Container, Logo } from './style'
-import { Search, ButtonPedidos, ButtonLoggout } from './style'
+import { Search, ButtonPedidos, ButtonLoggout, Favoritos} from './style'
 import principalIcon from '../../assets/icons/Polygon 1.svg'
 import searchIcon from '../../assets/icons/search.svg'
 import receitaIcon from '../../assets/icons/Receipt.svg'
@@ -10,7 +10,7 @@ export const Header = () => {
   <>
    <Container>
     <header>
-     <Logo>
+     <Logo to='/dashboard'>
       <img src={principalIcon}/>
       <p>food explorer</p>
      </Logo>
@@ -21,6 +21,10 @@ export const Header = () => {
        <input type="text" placeholder='Busque por pratos ou ingredientes'/>
       </div>
      </Search>
+
+    <Favoritos to='/favoritos'>
+     <p>Meus favoritos</p>
+    </Favoritos>
 
     <ButtonPedidos>
      <img src={receitaIcon}/>

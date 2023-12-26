@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
  width: 100%;
@@ -13,10 +14,11 @@ export const Container = styled.div`
  }
 `
 
-export const Logo = styled.div`
+export const Logo = styled(Link)`
  display: flex;
  align-items: center;
  gap: 0.625rem;
+ text-decoration: none;
 
  img {
   width: 2rem;
@@ -80,7 +82,7 @@ export const ButtonPedidos = styled.button`
 
  border-radius: 0.3125rem;
  background-color: ${({theme}) => theme.colors.Tints.tomato100};
- color: ${({theme}) => theme.colors.Light.light100};
+ color: ${({theme}) => theme.colors.Light.light300};
  cursor: pointer;
  text-align: center;
  font-family: 'Poppins', sans-serif;
@@ -109,5 +111,18 @@ export const ButtonLoggout = styled.button`
   transition: 2ms all;
   width: 2.2rem;
   height: 2.2rem;
+ }
+`
+
+export const Favoritos = styled(Link)`
+ text-decoration: none;
+ p {
+  color: ${({theme}) => theme.colors.Light.light300};
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  font-style: small;
+  font-weight: 400;
+  line-height: 100%;
  }
 `

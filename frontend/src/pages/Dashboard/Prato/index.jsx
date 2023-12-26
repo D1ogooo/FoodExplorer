@@ -22,7 +22,24 @@ function Prato () {
       <h1>Salada Ravanello</h1>
       <p>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim. O pão naan dá um toque especial.</p>
       <Ingredientes>
-       <p></p>
+       <div>
+        <p>alface</p>
+       </div>
+       <div>
+        <p>cebola</p>
+       </div>
+       <div>
+        <p>pão naan</p>
+       </div>
+       <div>
+        <p>pepino</p>
+       </div>
+       <div>
+        <p>rabanete</p>
+       </div>
+       <div>
+        <p>tomate</p>
+       </div>
       </Ingredientes>
      </Right>
     </Principal>

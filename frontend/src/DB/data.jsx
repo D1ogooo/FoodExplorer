@@ -16,7 +16,7 @@ export const dbRefeicoes = [
   title: 'Salada de Ravanello >',
   prato: `${ravanello}`,
   explicacao: 'Rabanetes, folhas verdes e molho agridoce salpicados com gergelim',
-  ingredientes: '',
+  ingredientes: ['alface','cebola','pão naan','pepino','rabanete','tomate'],
   valor: 'R$ 49,97',
  },
  {
