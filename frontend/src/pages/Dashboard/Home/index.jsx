@@ -1,15 +1,16 @@
 import { useState } from 'react'
-import { dbRefeicoes } from '../../DB/data'
-import { dbSobremesas } from '../../DB/data'
-import { dbBebidas } from '../../DB/data'
+import { dbRefeicoes } from '../../../data'
+import { dbSobremesas } from '../../../data'
+import { dbBebidas } from '../../../data'
+import { InspectValue } from '../../../components/Incluir'
 import { Container, FirstMainComponent, SecondMainContainer, ThirdMainContainer, FordMainContainer } from './style'
-import { CardPai, Card, InspectValue, FirstContentCard } from './style'
+import { CardPai, Card, FirstContentCard } from './style'
 import { Left, Right } from './style'
-import firstimageIcon from '../../assets/images/pngegg 1.svg'
-import Heart from '../../assets/icons/Heart vazio.svg'
-import HeartCheio from '../../assets/icons/Heart cheio.svg'
-import AdicionarIcon from '../../assets/icons/Plus.svg'
-import DecrementarIcon from '../../assets/icons/Minus.svg'
+import firstimageIcon from '../../../assets/images/pngegg 1.svg'
+import Heart from '../../../assets/icons/Heart vazio.svg'
+import HeartCheio from '../../../assets/icons/Heart cheio.svg'
+import AdicionarIcon from '../../../assets/icons/Plus.svg'
+import DecrementarIcon from '../../../assets/icons/Minus.svg'
 
 function Dashboard () {
   const [love, setLove] = useState(false)
@@ -37,13 +38,9 @@ function Dashboard () {
         </FirstContentCard>
         <p>Massa fresca com camarões e pesto. </p>
         <h2>R$ 79,97</h2>
-        <InspectValue>
-         <button id='increment' onClick={() => increment(card.id)}><img src={DecrementarIcon}/></button>
-          <p>01</p>
-         <button id='decrement' onClick={() => decrement(card.id)}><img src={AdicionarIcon}/></button>
-         <button id='incluir'>incluir</button>
-        </InspectValue>
-       </Card>))}
+        <InspectValue/>
+       </Card>
+       ))}
       </CardPai>
      </SecondMainContainer>
 
@@ -64,7 +61,8 @@ function Dashboard () {
          <button id='decrement' onClick={() => decrement(card.id)}><img src={AdicionarIcon}/></button>
          <button id='incluir'>incluir</button>
         </InspectValue>
-       </Card>))}
+       </Card>
+       ))}
       </CardPai>
      </ThirdMainContainer>
 
@@ -85,7 +83,8 @@ function Dashboard () {
          <button id='decrement' onClick={() => decrement(card.id)}><img src={AdicionarIcon}/></button>
          <button id='incluir'>incluir</button>
         </InspectValue>
-       </Card>))}
+       </Card>
+       ))}
       </CardPai>
      </FordMainContainer>
     </Container>
