@@ -70,7 +70,7 @@ export const Search = styled.div`
  }
 `
 
-export const ButtonPedidos = styled.button`
+export const ButtonPedidos = styled(Link)`
  display: flex;
  align-items: center;
  gap: 0.5rem;

@@ -80,6 +80,8 @@ h1 {
 `
 
 export const FordMainContainer = styled.section`
+  margin-bottom: 6rem;
+  
   h1 {
    margin-top: 3.9375rem;
    margin-bottom: 1.4375rem;
