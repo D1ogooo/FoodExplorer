@@ -14,10 +14,10 @@ export function Router() {
     <Route path='/register' element={<SignUp/>}/>
     <Route path='/login' element={<SignIn/>}/>
    <Route path='/' element={<DefaultLayout/>}> //Rota padrão da dashboard
+    <Route path='/checkinPedidos' element={<Pedidos/>}/>
     <Route path='/dashboard' element={<Dashboard/>}/>
     <Route path='/prato/:id' element={<Prato/>}/>
     <Route path='/favoritos' element={<Favoritos/>}/>
-    <Route path='/pedidos' element={<Pedidos/>}/>
    </Route>
   </Routes>
   </>

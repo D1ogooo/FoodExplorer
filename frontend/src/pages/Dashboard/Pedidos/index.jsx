@@ -1,6 +1,6 @@
 import { Container, Pai, CardContent, Card } from './style'
 import { Left, Right, First, Second, ButtonExcluir } from './style'
-import exemploPrato from '../Prato/molla.svg'
+import exemploPrato from '../../../assets/pratos/molla.svg'
 
 function Pedidos() {
   return (

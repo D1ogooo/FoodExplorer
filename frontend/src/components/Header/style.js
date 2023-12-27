@@ -73,6 +73,7 @@ export const Search = styled.div`
 export const ButtonPedidos = styled(Link)`
  display: flex;
  align-items: center;
+ text-decoration: none;
  gap: 0.5rem;
  background: none;
  border: none;

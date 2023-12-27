@@ -26,7 +26,7 @@ export const Header = () => {
      <p>Meus favoritos</p>
     </Favoritos>
 
-    <ButtonPedidos to='/pedidos'>
+    <ButtonPedidos to='/checkinPedidos'>
      <img src={receitaIcon}/>
      <p>Pedidos (0)</p>
     </ButtonPedidos>
