@@ -43,6 +43,23 @@ export const dbRefeicoes = [
   ingredientes: '',
   valor: 'R$ 30,97',
  },
+
+ {
+  id: 4,
+  title: 'Salada de Molla >',
+  prato: `${molla}`,
+  explicacao: 'Originado das profundezas das florestas tropicais.',
+  ingredientes: '',
+  valor: 'R$ 30,97',
+ },
+ {
+  id: 5,
+  title: 'Salada de Molla >',
+  prato: `${molla}`,
+  explicacao: 'Originado das profundezas das florestas tropicais.',
+  ingredientes: '',
+  valor: 'R$ 30,97',
+ },
 ]
 
 export const dbSobremesas = [

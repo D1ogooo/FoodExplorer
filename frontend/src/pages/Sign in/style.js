@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const Container = styled.div`
@@ -10,9 +11,10 @@ export const Container = styled.div`
  flex-wrap: wrap;
 `
 
-export const Left = styled.div`
+export const Left = styled(Link)`
  display: flex;
  gap: 1.1875rem;
+ text-decoration: none;
 
  h2 {
   background: ${({ theme }) => theme.colors.Light};
@@ -67,7 +69,7 @@ export const Form = styled.form`
   line-height: 171.429%;
  }
 
- input[type='text']{
+ input[type='text'], input[type='password']{
   color: ${({theme}) => theme.colors.Light.light500};
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;

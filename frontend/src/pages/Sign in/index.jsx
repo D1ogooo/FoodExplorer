@@ -14,10 +14,10 @@ function SignIn() {
   return (
    <>
      <Container>
-      <Left>
-       <img src={iconfoodexplorer}/>
-       <h2>food explorer</h2>
-      </Left>
+       <Left to='/'>
+        <img src={iconfoodexplorer}/>
+        <h2>food explorer</h2>
+       </Left>
       <Right>
        <Form>
         <h1>Faça login</h1>
@@ -26,9 +26,9 @@ function SignIn() {
           <input type="text" placeholder="Exemplo: exemplo@exemplo.com.br" onChange={(e) => setEmail(e.target.value)}/>
          </div>
         </label>
-        <label id="Seu nome">Senha
-         <div>
-          <input type="text" placeholder="No mínimo 6 caracteres" onChange={(e) => setPassword(e.target.value)}/>
+        <label>Senha
+         <div className="Seunome">
+          <input type="password" placeholder="No mínimo 6 caracteres" onChange={(e) => setPassword(e.target.value)}/>
          </div>
         </label>
         <input type="submit" onClick={loginSubmit}/>

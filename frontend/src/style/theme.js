@@ -32,4 +32,11 @@ export const theme = {
      cake200: '#82F3FF',
     }
   },
+  Componentes: {
+    buttonIncluir: {
+     default: '#750310',
+     hover: '#92000E',
+     disabled: '#AB4D55',
+    },
+  }
 }

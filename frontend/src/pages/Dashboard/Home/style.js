@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const Container = styled.div`
- width: 90%;
+ width: 80%;
  margin: 0 auto;
 `
 
@@ -66,8 +66,44 @@ export const SecondMainContainer = styled.section`
  }
 `
 
+export const Pai = styled.section`
+ display: flex;
+ justify-content: space-between;
+ width: 100%;
+
+ .button_left { 
+  padding: 1.5rem;
+  position: absolute;
+  margin-top: 12rem;
+  margin-left: -6rem;
+  img {
+   width: 2.5rem;
+   height: 2.5rem;
+   cursor: pointer;
+   flex-shrink: 0;
+  }
+   background: none;
+   border: none;
+  }
+
+ .button_right {
+  position: right;
+  padding: 1.5rem;
+  margin-top: -4.5rem;
+  margin-left: .1rem;
+  img {
+   width: 2.5rem;
+   height: 2.5rem;
+   cursor: pointer;
+   flex-shrink: 0;
+  }
+   background: none;
+   border: none;
+  }
+`
+
 export const ThirdMainContainer = styled.section`
-h1 {
+  h1 {
    margin-top: 3.9375rem;
    margin-bottom: 1.4375rem;
    color: ${({theme}) => theme.colors.Light.light300};
@@ -97,6 +133,11 @@ export const FordMainContainer = styled.section`
 export const CardPai = styled.div`
  display: flex;
  width: 100%;
+ scroll-behavior: smooth;
+ 
+ overflow-x: auto;
+ overflow: hidden;
+ 
  align-items: start;
  justify-content: start;
  margin-bottom: 2.9375rem;

@@ -98,7 +98,7 @@ export const ButtonPedidos = styled(Link)`
  }
 `
 
-export const ButtonLoggout = styled.button`
+export const ButtonLoggout = styled(Link)`
  background: none;
  border: none;
  cursor: pointer;

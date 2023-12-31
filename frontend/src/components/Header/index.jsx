@@ -10,7 +10,7 @@ export const Header = () => {
   <>
    <Container>
     <header>
-     <Logo to='/dashboard'>
+     <Logo to='/'>
       <img src={principalIcon}/>
       <p>food explorer</p>
      </Logo>
@@ -31,7 +31,7 @@ export const Header = () => {
      <p>Pedidos (0)</p>
     </ButtonPedidos>
 
-    <ButtonLoggout>
+    <ButtonLoggout to='/login'>
      <img src={loggoutIcon}/>
     </ButtonLoggout>
     </header>
