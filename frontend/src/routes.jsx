@@ -6,6 +6,7 @@ import SignUp from './pages/Sign up/index'
 import Dashboard from './pages/Dashboard/Home/index'
 import Prato from './pages/Dashboard/Prato'
 import Pedidos from './pages/Dashboard/Pedidos'
+import Editar from './pages/Dashboard/Admin/Editar'
 
 export function Router() {
  return (
@@ -18,6 +19,7 @@ export function Router() {
     <Route path='/checkinPedidos' element={<Pedidos/>}/>
     <Route path='/prato/:id' element={<Prato/>}/>
     <Route path='/favoritos' element={<Favoritos/>}/>
+    <Route path='/editarPrato' element={<Editar/>}/>
    </Route>
   </Routes>
   </>

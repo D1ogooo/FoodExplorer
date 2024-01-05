@@ -43,7 +43,6 @@ export const dbRefeicoes = [
   ingredientes: '',
   valor: 'R$ 30,97',
  },
-
  {
   id: 4,
   title: 'Salada de Molla >',

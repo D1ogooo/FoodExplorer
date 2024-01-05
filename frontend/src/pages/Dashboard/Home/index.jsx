@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react'
 import { dbSobremesas, dbRefeicoes, dbBebidas } from '../../../DB/data'
-import { InspectValue } from '../../../components/Incluir'
+import { InspectValue } from '../../../components/User/Incluir'
 import { Container, FirstMainComponent, SecondMainContainer, ThirdMainContainer, FordMainContainer } from './style'
 import { CardPai, Card, FirstContentCard } from './style'
 import { Left, Right, Pai } from './style'

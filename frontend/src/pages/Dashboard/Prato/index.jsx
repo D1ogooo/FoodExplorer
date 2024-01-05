@@ -1,4 +1,3 @@
-import { useParams } from 'react-router-dom'
 import { Container, Return, Principal, PaiContainer, Ingredientes } from './style'
 import { Left, Right } from './style'
 import returnIcon from '../../../assets/icons/CaretLeft.svg'
@@ -45,7 +44,7 @@ function Prato () {
     </Principal>
    </Container>
   </PaiContainer>
-  </>
+ </>
  )
 }
 

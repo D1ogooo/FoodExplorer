@@ -1,11 +1,11 @@
 import { Container, Logo } from './style'
 import { Search, ButtonPedidos, ButtonLoggout, Favoritos} from './style'
-import principalIcon from '../../assets/icons/Polygon 1.svg'
-import searchIcon from '../../assets/icons/search.svg'
-import receitaIcon from '../../assets/icons/Receipt.svg'
-import loggoutIcon from '../../assets/icons/SignOut.svg'
+import principalIcon from '../../../assets/icons/Polygon 1.svg'
+import searchIcon from '../../../assets/icons/search.svg'
+import receitaIcon from '../../../assets/icons/Receipt.svg'
+import loggoutIcon from '../../../assets/icons/SignOut.svg'
 
-export const Header = () => {
+export const HeaderAdmin = () => {
  return (
   <>
    <Container>

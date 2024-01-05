@@ -33,7 +33,7 @@ export const Logo = styled(Link)`
   font-weight: 700;
   line-height: normal;
  }
-`ai vamos la, quando agente qusier dar um push agente so faz isso aqui
+`
 
 export const Search = styled.div`
  display: flex;

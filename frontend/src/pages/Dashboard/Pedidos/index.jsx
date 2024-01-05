@@ -14,7 +14,7 @@ function Pedidos() {
   function handleImage (id) {
     if (id == 0){
       setImage(true)
-    }else {
+    } else {
       setImage(false)
     }
   }
