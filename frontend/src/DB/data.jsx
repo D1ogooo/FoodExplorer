@@ -63,7 +63,7 @@ export const dbRefeicoes = [
 
 export const dbSobremesas = [
  {
-  id: 4,
+  id: 6,
   title: 'Prugna Pie >',
   prato: `${prugna}`,
   explicacao: 'Torta de ameixa com massa amanteigada, polvilho em açúcar.',
@@ -71,7 +71,7 @@ export const dbSobremesas = [
   valor: 'R$ 79,97',
  },
  {
-  id: 5,
+  id: 7,
   title: 'Peachy pastrie >',
   prato: `${pastry}`,
   explicacao: 'Delicioso folheado de pêssego com folhas de hortelã.',
@@ -79,7 +79,7 @@ export const dbSobremesas = [
   valor: 'R$ 32,97',
  },
  {
-  id: 6,
+  id: 8,
   title: 'Macarons >',
   prato: `${macaron}`,
   explicacao: 'Farinha de amêndoas, manteiga, claras e açúcar.',
@@ -87,7 +87,7 @@ export const dbSobremesas = [
   valor: 'R$ 79,97',
  },
  {
-  id: 7,
+  id: 9,
   title: 'Bolo de dish >',
   prato: `${dish}`,
   explicacao: 'O Bolo Refrescante de Dish é uma obra-prima da confeitaria, onde a suavidade da massa encontra a intensidade dos damascos frescos.',
@@ -98,7 +98,7 @@ export const dbSobremesas = [
 
 export const dbBebidas = [
  {
-  id: 8,
+  id: 10,
   title: 'Espresso >',
   prato: `${espresso}`,
   explicacao: 'Café cremoso feito na temperatura e pressões perfeitas.',
@@ -106,7 +106,7 @@ export const dbBebidas = [
   valor: 'R$ 15,97',
  },
  {
-  id: 9,
+  id: 11,
   title: 'Suco de maracujá >',
   prato: `${sucomaracuja}`,
   explicacao: 'Suco de maracujá gelado, cremoso, docinho.',
@@ -114,7 +114,7 @@ export const dbBebidas = [
   valor: 'R$ 13,97',
  },
  {
-  id: 10,
+  id: 12,
   title: 'Tè dautunno >',
   prato: `${tedautnno}`,
   explicacao: 'Chá de anis, canela e limão. Sinta o outono italiano.',

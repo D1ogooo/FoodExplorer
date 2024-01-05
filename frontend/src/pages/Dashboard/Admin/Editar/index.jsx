@@ -15,8 +15,8 @@ function Editar() {
     <>
       <PaiContainer>
         <Return to="/">
-          <img src={returnIcon} />
-          <p>voltar</p>
+         <img src={returnIcon} />
+         <p>voltar</p>
         </Return>
         <Container>
           <Title>Adicionar prato</Title>
@@ -26,8 +26,8 @@ function Editar() {
                 <label id="select_image">
                   Imagem do prato
                   <div>
-                    <img src={UploadSimple} />
-                    <input type="file" accept="image/*" />
+                   <img src={UploadSimple} />
+                   s<input type="file" accept="image/*" />
                   </div>
                 </label>
               </Primeiro>
