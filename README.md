@@ -19,3 +19,5 @@ como também para o restaurante uma agilidade na entrega de seus produtos.
 * Construção da api porem estou com dificuldades para entender upload de imagens e principalmente com dificuldades em banco relacional
 
 * Terminar de fazer a página de edição de pratos do admin
+
+     👩‍💻👩‍💻👩‍💻 Front-end em andamento....
