@@ -31,7 +31,7 @@ export const HeaderUser = () => {
      <p>Pedidos (0)</p>
     </ButtonPedidos>
 
-    <ButtonLoggout to='/login'>
+    <ButtonLoggout to='/'>
      <img src={loggoutIcon}/>
     </ButtonLoggout>
     </header>

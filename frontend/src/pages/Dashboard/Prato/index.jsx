@@ -1,3 +1,5 @@
+import { IncluirInspecionar } from '../../../components/User/incluir_inspecionar'
+import { InspectValue } from '../../../components/User/Incluir'
 import { Container, Return, Principal, PaiContainer, Ingredientes } from './style'
 import { Left, Right } from './style'
 import returnIcon from '../../../assets/icons/CaretLeft.svg'
@@ -40,6 +42,7 @@ function Prato () {
         <p>tomate</p>
        </div>
       </Ingredientes>
+     <IncluirInspecionar/>
      </Right>
     </Principal>
    </Container>

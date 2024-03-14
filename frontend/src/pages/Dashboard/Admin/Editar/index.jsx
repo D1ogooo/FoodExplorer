@@ -10,6 +10,15 @@ import UploadSimple from "../../../../assets/icons/UploadSimple.svg";
 
 function Editar() {
   const [opcaoSelecionada, setOpcaoSelecionada] = useState("");
+  const [listaDeMarcadores, setListaDeMarcadores] = useState(['Pão Naan'])
+  const [name, setName] = useState('')
+
+  function deleteMark(index) {
+   let lista = [...listaDeMarcadores]
+   lista.splice(index, 1)
+   setListaDeMarcadores(lista)
+  }
+
 
   return (
     <>
@@ -24,29 +33,29 @@ function Editar() {
             <First>
               <Primeiro>
                 <label id="select_image">
-                  Imagem do prato
-                  <div>
-                   <img src={UploadSimple} />
-                   s<input type="file" accept="image/*" />
-                  </div>
+                 Imagem do prato
+                 <div>
+                  <img src={UploadSimple} />
+                  <input type="file" accept="image/*" />
+                 </div>
                 </label>
               </Primeiro>
               <Segundo>
                 <label id="declare_name">
-                  Nome
-                  <div>
-                   <input type="text" placeholder="Ex.: Salada Ceasar" />
-                  </div>
+                 Nome
+                 <div>
+                  <input type="text" placeholder="Ex.: Salada Ceasar" onChange={(e) => setName(e.target.value)}/>
+                 </div>
                 </label>
               </Segundo>
               <Terceiro>
-                <label id="option_categoria">Categoria
-                  <select onChange={(e) => setOpcaoSelecionada(e.target.value)}>
-                    <option value="opcao1">Refeição</option>
-                    <option value="opcao2">Sobremesas</option>
-                    <option value="opcao3">Bebidas</option>
-                  </select>
-                </label>
+               <label id="option_categoria">Categoria
+                <select onChange={(e) => setOpcaoSelecionada(e.target.value)}>
+                 <option value="opcao1">Refeição</option>
+                 <option value="opcao2">Sobremesas</option>
+                 <option value="opcao3">Bebidas</option>
+                </select>
+               </label>
               </Terceiro>
             </First>
 
@@ -54,12 +63,14 @@ function Editar() {
             <MarkContainer>
              <TitleMark>Ingredientes</TitleMark>
               <MarkExternal>
-               <CardDefault>
-               <p>Pão Naan</p>
-               <img src={IconClose}/>
-               </CardDefault>
-               <Marcacoes />
-               {/*setListaDeMarcadores={setListaDeMarcadores}*/}
+               {listaDeMarcadores.map((mark,index) => (
+                 <CardDefault key={index}>
+                  <p>{mark}</p>
+                  <img src={IconClose} onClick={() => deleteMark(index)}/>
+                 </CardDefault>
+                ))}
+               <Marcacoes setListaDeMarcadores={setListaDeMarcadores}/>
+               {console.log(listaDeMarcadores)}
               </MarkExternal>
              </MarkContainer>
              <label id="valor_select"><p>Preço</p>

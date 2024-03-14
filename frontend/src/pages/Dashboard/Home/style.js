@@ -197,6 +197,7 @@ export const Card = styled(Link)`
 export const FirstContentCard = styled(Link)`
  display: flex;
  justify-content: center;
+ scroll-behavior: smooth;
 
  #prato {
   width: 100%;

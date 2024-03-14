@@ -80,6 +80,7 @@ export const Ingredientes = styled.div`
  justify-content: center;
  align-items: center;
  gap: 0.75rem;
+ margin-bottom: 48px;
 
  div {
   border-radius: 0.3125rem;
