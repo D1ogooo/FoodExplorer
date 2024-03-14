@@ -1,5 +1,6 @@
 import { useState } from "react"
-import { Container, Left, Right, Form } from "./style"
+import { Container, Left, Form, ReturnLogin } from "./style"
+import { Register } from "../Sign up/style"
 import iconfoodexplorer from '../../assets/icons/Polygon 1.svg'
 
 function SignIn() {
@@ -18,7 +19,7 @@ function SignIn() {
        <img src={iconfoodexplorer}/>
        <h2>food explorer</h2>
       </Left>
-      <Right>
+      <>
        <Form>
         <h1>Crie sua conta</h1>
         <label id="seunome">Seu nome
@@ -36,9 +37,14 @@ function SignIn() {
           <input type="text" placeholder="No mínimo 6 caracteres" onChange={(e) => setPassword(e.target.value)}/>
          </div>
         </label>
-        <input type="submit" onClick={loginSubmit}/>
+        <Register onClick={loginSubmit}>
+         Criar conta
+        </Register>
+        <ReturnLogin to='/'>
+         Já tenho uma conta
+        </ReturnLogin>
        </Form>
-      </Right>
+      </>
      </Container>
    </>
   )

@@ -102,8 +102,22 @@ export const Form = styled.form`
   font-weight: 400;
   line-height: 100%;
  }
+
+ #registro{ 
+  color: #D9D9D9;
+  font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+  font-style: normal;
+  font-weight: 400;
+ }
 `
 
-export const Right = styled.div`
- 
+export const Register = styled(Link)`
+ #registro{ 
+  color: #D9D9D9;
+  font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+  font-style: normal;
+  font-weight: 400;
+ }
 `

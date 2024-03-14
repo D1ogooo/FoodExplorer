@@ -13,9 +13,9 @@ export function Router() {
   <>
    <Routes>
     <Route path='/register' element={<SignUp/>}/>
-    <Route path='/login' element={<SignIn/>}/>
+    <Route path='/' element={<SignIn/>}/>
    <Route path='/' element={<DefaultLayout/>}> //Rota padrão da dashboard
-    <Route path='/' element={<Dashboard/>}/>
+    <Route path='/dashboard' element={<Dashboard/>}/>
     <Route path='/checkinPedidos' element={<Pedidos/>}/>
     <Route path='/prato/:id' element={<Prato/>}/>
     <Route path='/favoritos' element={<Favoritos/>}/>

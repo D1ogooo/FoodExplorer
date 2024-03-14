@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Container, Left, Right, Form } from "./style"
+import { Container, Left, Form, Register } from "./style"
 import iconfoodexplorer from '../../assets/icons/Polygon 1.svg'
 
 function SignIn() {
@@ -18,7 +18,7 @@ function SignIn() {
         <img src={iconfoodexplorer}/>
         <h2>food explorer</h2>
        </Left>
-      <Right>
+      <>
        <Form>
         <h1>Faça login</h1>
         <label id="email">Email
@@ -32,8 +32,9 @@ function SignIn() {
          </div>
         </label>
         <input type="submit" onClick={loginSubmit}/>
+        <Register href="#" to='/register' id='registro'>Criar uma conta</Register>
        </Form>
-      </Right>
+      </>
      </Container>
    </>
   )

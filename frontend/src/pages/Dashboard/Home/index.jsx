@@ -83,7 +83,7 @@ function Dashboard () {
          <img src={refeicoes.prato} id='prato'/>
          <img src={love ? HeartCheio : Heart }
           onClick={(e) => {
-             setLove(!love)
+            setLove(!love)
             e.preventDefault()
            e.stopPropagation()
           }}/>
@@ -148,7 +148,7 @@ function Dashboard () {
              setLove(!love)
             e.preventDefault()
            e.stopPropagation()
-           }}/>
+          }}/>
          </FirstContentCard>
         <h1>{bebidas.title}</h1>
         <p>{bebidas.explicacao}</p>
@@ -160,7 +160,7 @@ function Dashboard () {
        <button className='button_right'>
         <img src={CaretRight} onClick={handleRightClickThird}/>
        </button>
-       </Pai>
+      </Pai>
      </FordMainContainer>
     </Container>
    </>

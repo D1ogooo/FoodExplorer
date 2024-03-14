@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const Container = styled.div`
@@ -47,26 +48,6 @@ export const Form = styled.form`
   line-height: 140%;
  }
 
- input[type='submit']{
-  align-self: stretch;
-  cursor: pointer;
-  border: none;
-  display: flex;
-  padding: 0.75rem 2rem;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  border-radius: 0.3125rem;
-  background: ${({ theme }) => theme.colors.Tints.tomato100};
-  color: ${({theme}) => theme.colors.Light.light100};
-  text-align: center;
-  font-family: 'Poppins',sans-serif;
-  font-size: 0.875rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 171.429%;
- }
-
  input[type='text']{
   color: ${({theme}) => theme.colors.Light.light500};
   background: ${({theme}) => theme.colors.Dark.dark900};
@@ -101,6 +82,30 @@ export const Form = styled.form`
  }
 `
 
-export const Right = styled.div`
- 
+export const Register = styled.button`
+  align-self: stretch;
+  cursor: pointer;
+  border: none;
+  display: flex;
+  padding: 0.75rem 2rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.3125rem;
+  background: ${({ theme }) => theme.colors.Tints.tomato100};
+  color: ${({theme}) => theme.colors.Light.light100};
+  text-align: center;
+  font-family: 'Poppins',sans-serif;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 171.429%;
+`
+
+export const ReturnLogin = styled(Link)`
+  color: #D9D9D9;
+  font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+  font-style: normal;
+  font-weight: 400;
 `
