@@ -79,7 +79,6 @@ function Editar() {
               </div>
              </label>
             </Second>
-
             <Third>
              <label id="valor_select"><p>Descrição</p>
               <div>
