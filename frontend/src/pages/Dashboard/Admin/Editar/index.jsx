@@ -70,7 +70,7 @@ function Editar() {
                  </CardDefault>
                 ))}
                <Marcacoes setListaDeMarcadores={setListaDeMarcadores}/>
-               {console.log(listaDeMarcadores)}
+             
               </MarkExternal>
              </MarkContainer>
              <label id="valor_select"><p>Preço</p>
