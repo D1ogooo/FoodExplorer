@@ -153,6 +153,7 @@ export const ButtonExcluir = styled.button`
 export const CardPagamento = styled.div`
  display: flex;
  width: 530px;
+ cursor: default;
  height: 400px;
  padding: 47px 130px;
  justify-content: center;
@@ -182,6 +183,7 @@ export const Form = styled.form`
  display: flex;
  flex-direction: column;
  font-family: 'Poppins', sans-serif;
+ cursor: default;
 
  button[type='submit']{
   display: flex;
@@ -213,9 +215,11 @@ export const Form = styled.form`
   font-style: regular;
   font-weight: 400;
   line-height: 100%;
+  cursor: text;
  }
 
  div { 
+  cursor: default;
   border: 1px solid ${({theme}) => theme.colors.Light.light100};
   display: flex;
   width: 100%;
@@ -225,6 +229,7 @@ export const Form = styled.form`
  }
  
  label {
+  cursor: default;
   color: ${({theme}) => theme.colors.Light.light400};
   font-family: 'Roboto', sans-serif;
   display: flex;
@@ -234,9 +239,11 @@ export const Form = styled.form`
 
  #text_number_card {
   margin-bottom: 37px;
+  cursor: default;
  }
 
  .info_card {
+  cursor: default;
   display: flex;
   justify-content: center;
   align-items: center;
