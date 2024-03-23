@@ -19,7 +19,6 @@ function Editar() {
    setListaDeMarcadores(lista)
   }
 
-
   return (
     <>
       <PaiContainer>

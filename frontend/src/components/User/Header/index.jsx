@@ -10,7 +10,7 @@ export const HeaderUser = () => {
   <>
    <Container>
     <header>
-     <Logo to='/'>
+     <Logo to='/dashboard'>
       <img src={principalIcon}/>
       <p>food explorer</p>
      </Logo>

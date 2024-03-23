@@ -10,7 +10,7 @@ export const HeaderAdmin = () => {
   <>
    <Container>
     <header>
-     <Logo to='/'>
+     <Logo to='/dashboard'>
       <img src={principalIcon}/>
       <p>food explorer</p>
      </Logo>
