@@ -69,7 +69,6 @@ function Editar() {
                  </CardDefault>
                 ))}
                <Marcacoes setListaDeMarcadores={setListaDeMarcadores}/>
-               {console.log(listaDeMarcadores)}
               </MarkExternal>
              </MarkContainer>
              <label id="valor_select"><p>Preço</p>
@@ -78,7 +77,6 @@ function Editar() {
               </div>
              </label>
             </Second>
-
             <Third>
              <label id="valor_select"><p>Descrição</p>
               <div>
