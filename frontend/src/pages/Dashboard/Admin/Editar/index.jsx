@@ -31,21 +31,21 @@ function Editar() {
           <Content>
             <First>
               <Primeiro>
-                <label id="select_image">
-                 Imagem do prato
+               <label id="select_image">
+                Imagem do prato
                  <div>
                   <img src={UploadSimple} />
-                  <input type="file" accept="image/*" />
-                 </div>
-                </label>
+                 <input type="file" accept="image/*" />
+                </div>
+               </label>
               </Primeiro>
               <Segundo>
-                <label id="declare_name">
-                 Nome
-                 <div>
-                  <input type="text" placeholder="Ex.: Salada Ceasar" onChange={(e) => setName(e.target.value)}/>
-                 </div>
-                </label>
+               <label id="declare_name">
+                Nome
+                <div>
+                 <input type="text" placeholder="Ex.: Salada Ceasar" onChange={(e) => setName(e.target.value)}/>
+                </div>
+               </label>
               </Segundo>
               <Terceiro>
                <label id="option_categoria">Categoria
@@ -63,11 +63,10 @@ function Editar() {
              <TitleMark>Ingredientes</TitleMark>
               <MarkExternal>
                {listaDeMarcadores.map((mark,index) => (
-                 <CardDefault key={index}>
-                  <p>{mark}</p>
-                  <img src={IconClose} onClick={() => deleteMark(index)}/>
-                 </CardDefault>
-                ))}
+                <CardDefault key={index}>
+                 <p>{mark}</p>
+                 <img src={IconClose} onClick={() => deleteMark(index)}/>
+                </CardDefault>))}
                <Marcacoes setListaDeMarcadores={setListaDeMarcadores}/>
               </MarkExternal>
              </MarkContainer>
