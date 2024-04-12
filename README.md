@@ -20,4 +20,4 @@ como também para o restaurante uma agilidade na entrega de seus produtos.
 
 * Terminar de fazer a página de edição de pratos do admin
 
-     👩‍💻👩‍💻👩‍💻 Front-end em andamento....
+     👩‍💻👩‍💻👩‍💻 Front-end práticamente pronto.
