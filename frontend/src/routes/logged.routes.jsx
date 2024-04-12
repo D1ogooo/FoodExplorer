@@ -13,7 +13,6 @@ export function LoggedRouter() {
    <Routes>
    <Route path='/' element={<DefaultLayout/>}> //Rota padrão da dashboard
     <Route path='/' element={<Dashboard/>}/>
-    <Route path='/' element={<Dashboard/>}/>
     <Route path='/checkinPedidos' element={<Pedidos/>}/>
     <Route path='/prato/:id' element={<Prato/>}/>
     <Route path='/favoritos' element={<Favoritos/>}/>
