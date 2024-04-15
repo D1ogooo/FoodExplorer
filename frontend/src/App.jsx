@@ -8,7 +8,7 @@ import { useauth } from './hooks/useAuth'
 import { useContext } from 'react'
 
 function App() {
- const user = useContext(useauth)
+ const { user } = useContext(useauth)
 
  return (
   <>
