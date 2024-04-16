@@ -6,7 +6,7 @@ export function useauth ({ children }) {
   const user = false
   
   return (
-   <Context.Provider value={user}>
+   <Context.Provider value={{user}>
     {children}
    </Context.Provider>
   )
