@@ -2,7 +2,7 @@ import { createContext } from "react";
 
 const Context = createContext()
 
-export function useauth ({ children }) {
+export function useAuth ({ children }) {
   const user = false
   
   return (
