@@ -4,11 +4,11 @@ import { BrowserRouter } from 'react-router-dom'
 import { LoggedRouter } from './routes/logged.routes'
 import { AuthRouter } from './routes/auth.routes'
 import { GlobalStyle } from './style/GlobalStyle'
-import { useauth } from './hooks/useAuth'
+import { useAuth } from './hooks/useAuth'
 import { useContext } from 'react'
 
 function App() {
- const { user } = useContext(useauth)
+ const { user } = useContext(useAuth)
 
  return (
   <>
