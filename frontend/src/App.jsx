@@ -15,7 +15,7 @@ function App() {
    <ThemeProvider theme={theme}>
     <BrowserRouter>
      <useauth>
-      {user ? <LoggedRouter /> : <AuthRouter />}
+      {user() ? <LoggedRouter /> : <AuthRouter />}
      </useauth>
      <GlobalStyle/>
     </BrowserRouter>
