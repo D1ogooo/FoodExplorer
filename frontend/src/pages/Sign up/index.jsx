@@ -1,22 +1,32 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { api } from "../../services/api"
 import { Container, Left, Form, ReturnLogin } from "./style"
 import { Register } from "../Sign up/style"
 import iconfoodexplorer from '../../assets/icons/Polygon 1.svg'
 
 function SignIn() {
-  const [username, setName] = useState()
+  const [name, setName] = useState()
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
+  const navigate = useNavigate()
 
-  function loginSubmit(e) {
+  function handleSubmit(e) {
    e.preventDefault()
+   api.post('/users/create', { name, email, password })
+   .then(() => {
+    navigate('/')
+   })
+   .catch((error) => {
+    alert(error.response.data.message)
+   })
   }
 
   return (
    <>
      <Container>
       <Left>
-       <img src={iconfoodexplorer}/>
+       <img alt='' src={iconfoodexplorer}/>
        <h2>food explorer</h2>
       </Left>
       <>
@@ -29,15 +39,15 @@ function SignIn() {
         </label>
         <label id="email">Email
          <div >
-          <input type="text" placeholder="Exemplo: exemplo@exemplo.com.br" onChange={(e) => setEmail(e.target.value)}/>
+          <input type="email" placeholder="Exemplo: exemplo@exemplo.com.br" onChange={(e) => setEmail(e.target.value)}/>
          </div>
         </label>
         <label id="Seu nome">Senha
-         <div >
-          <input type="text" placeholder="No mínimo 6 caracteres" onChange={(e) => setPassword(e.target.value)}/>
+         <div>
+          <input type="password" placeholder="No mínimo 6 caracteres" onChange={(e) => setPassword(e.target.value)}/>
          </div>
         </label>
-        <Register onClick={loginSubmit}>
+        <Register onClick={handleSubmit}>
          Criar conta
         </Register>
         <ReturnLogin to='/'>

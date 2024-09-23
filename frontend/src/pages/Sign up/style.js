@@ -35,7 +35,7 @@ export const Form = styled.form`
  gap: 2rem;
 
  border-radius: 1rem;
- background: ${({ theme}) => theme.colors.Dark.dark700};
+ background: ${({ theme }) => theme.colors.Dark.dark700};
 
  h1 {
   align-self: stretch;
@@ -48,9 +48,11 @@ export const Form = styled.form`
   line-height: 140%;
  }
 
- input[type='text']{
-  color: ${({theme}) => theme.colors.Light.light500};
-  background: ${({theme}) => theme.colors.Dark.dark900};
+ input[type='text'],
+ input[type='email'],
+ input[type='password'] {
+  color: ${({ theme }) => theme.colors.Light.light500};
+  background: ${({ theme }) => theme.colors.Dark.dark900};
   padding-top: 0.1812rem;
   border: none;
   font-family: 'Roboto', sans-serif;
@@ -73,7 +75,7 @@ export const Form = styled.form`
  
  label {
   align-self: stretch;
-  color: ${({theme}) => theme.colors.Light.light400};
+  color: ${({ theme }) => theme.colors.Light.light400};
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
   font-style: normal;
@@ -93,7 +95,7 @@ export const Register = styled.button`
   gap: 0.5rem;
   border-radius: 0.3125rem;
   background: ${({ theme }) => theme.colors.Tints.tomato100};
-  color: ${({theme}) => theme.colors.Light.light100};
+  color: ${({ theme }) => theme.colors.Light.light100};
   text-align: center;
   font-family: 'Poppins',sans-serif;
   font-size: 0.875rem;

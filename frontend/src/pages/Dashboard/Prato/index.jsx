@@ -10,7 +10,7 @@ function Prato () {
  return (
   <>
    <PaiContainer>
-    <Return to='/dashboard'>
+    <Return to='/'>
      <img src={returnIcon}/>
      <p>voltar</p>
     </Return>

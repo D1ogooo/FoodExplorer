@@ -36,7 +36,7 @@ export const Form = styled.form`
  gap: 2rem;
 
  border-radius: 1rem;
- background: ${({ theme}) => theme.colors.Dark.dark700};
+ background: ${({ theme }) => theme.colors.Dark.dark700};
 
  h1 {
   align-self: stretch;
@@ -60,7 +60,7 @@ export const Form = styled.form`
   gap: 0.5rem;
   border-radius: 0.3125rem;
   background: ${({ theme }) => theme.colors.Tints.tomato100};
-  color: ${({theme}) => theme.colors.Light.light100};
+  color: ${({ theme }) => theme.colors.Light.light100};
   text-align: center;
   font-family: 'Poppins',sans-serif;
   font-size: 0.875rem;
@@ -69,8 +69,8 @@ export const Form = styled.form`
   line-height: 171.429%;
  }
 
- input[type='text'], input[type='password']{
-  color: ${({theme}) => theme.colors.Light.light500};
+ input[type='email'], input[type='password']{
+  color: ${({ theme }) => theme.colors.Light.light500};
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
   font-style: normal;
@@ -89,13 +89,13 @@ export const Form = styled.form`
   height: 3rem;
   border-radius: 0.5rem;
   border-radius: 5px;
-  border: 1px solid ${({theme}) => theme.colors.Light.light100};
+  border: 1px solid ${({ theme }) => theme.colors.Light.light100};
   margin-top: .5rem;
  }
  
  label {
   align-self: stretch;
-  color: ${({theme}) => theme.colors.Light.light400};
+  color: ${({ theme }) => theme.colors.Light.light400};
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
   font-style: normal;
