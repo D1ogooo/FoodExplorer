@@ -20,8 +20,8 @@ export const Container = styled.div`
   cursor: pointer;
   border: none;
   border-radius: 0.3125rem;
-  background: ${({theme}) => theme.colors.Tints.tomato100};
-  color: ${({theme}) => theme.colors.Light.light100};
+  background: ${({ theme }) => theme.colors.Tints.tomato100};
+  color: ${({ theme }) => theme.colors.Light.light100};
   text-align: center;
   font-size: 0.875rem;
   font-style: normal;

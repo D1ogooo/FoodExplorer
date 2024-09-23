@@ -31,8 +31,8 @@ class UsersController {
   const emailExist = await prisma.User.findUnique({
    where: { email },
   })
-
-  const correctPassword = bcrypt.compare(password, emailExist.password)
+  
+  const correctPassword = await bcrypt.compare(password, emailExist.password)
    if(!correctPassword) {
     res.status(401).json({ "error": "Senha invalida declarada" })
    }

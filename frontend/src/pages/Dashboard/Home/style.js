@@ -30,7 +30,7 @@ export const Left = styled.section`
 export const Right = styled.section`
  h1 {
   width: 26.375rem;
-  color: ${({theme}) => theme.colors.Light.light300};
+  color: ${({ theme }) => theme.colors.Light.light300};
   font-family: 'Poppins', sans-serif;
   font-size: 2.5rem;
   font-style: normal;
@@ -40,7 +40,7 @@ export const Right = styled.section`
 
  p {
   width: 26.125rem;
-  color: ${({theme}) => theme.colors.Light.light300};
+  color: ${({ theme }) => theme.colors.Light.light300};
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
   font-style: normal;
@@ -57,7 +57,7 @@ export const SecondMainContainer = styled.section`
  h1 {
   margin-top: 3.9375rem;
   margin-bottom: 1.4375rem;
-  color: ${({theme}) => theme.colors.Light.light300};
+  color: ${({ theme }) => theme.colors.Light.light300};
   font-family: 'Poppins', sans-serif;
   font-size: 2rem;
   font-style: normal;
@@ -106,7 +106,7 @@ export const ThirdMainContainer = styled.section`
   h1 {
    margin-top: 3.9375rem;
    margin-bottom: 1.4375rem;
-   color: ${({theme}) => theme.colors.Light.light300};
+   color: ${({ theme }) => theme.colors.Light.light300};
    font-family: 'Poppins', sans-serif;
    font-size: 2rem;
    font-style: normal;
@@ -121,7 +121,7 @@ export const FordMainContainer = styled.section`
   h1 {
    margin-top: 3.9375rem;
    margin-bottom: 1.4375rem;
-   color: ${({theme}) => theme.colors.Light.light300};
+   color: ${({ theme }) => theme.colors.Light.light300};
    font-family: 'Poppins', sans-serif;
    font-size: 2rem;
    font-style: normal;
@@ -144,7 +144,7 @@ export const CardPai = styled.div`
  gap: 27px;
 
  h2 {
-  color: ${({theme}) => theme.colors.Tints.cake200};
+  color: ${({ theme }) => theme.colors.Tints.cake200};
   text-align: center;
   font-family: 'Roboto', sans-serif;
   font-size: 2rem;
@@ -168,12 +168,12 @@ export const Card = styled(Link)`
  text-align: center;
  gap: 0.9375rem;
  border-radius: 0.5rem;
- background: ${({theme}) => theme.colors.Dark.dark200};
- border: 0.0625rem solid ${({theme}) => theme.colors.Dark.dark300};
+ background: ${({ theme }) => theme.colors.Dark.dark200};
+ border: 0.0625rem solid ${({ theme }) => theme.colors.Dark.dark300};
 
  h1 {
   margin-top: -1px;
-  color: ${({theme}) => theme.colors.Light.light300};
+  color: ${({ theme }) => theme.colors.Light.light300};
   text-align: center;
   font-family: 'Poppins', sans-serif;
   font-size: 22px;
@@ -183,7 +183,7 @@ export const Card = styled(Link)`
  }
 
  p {
-  color: ${({theme}) => theme.colors.Light.light400};
+  color: ${({ theme }) => theme.colors.Light.light400};
   flex: 1 0 0;
   text-align: center;
   font-family: 'Roboto', sans-serif;

@@ -1,6 +1,8 @@
 import { useState, useRef } from 'react'
+import { useAuth } from '../../../hooks/useAuth'
 import { dbSobremesas, dbRefeicoes, dbBebidas } from '../../../DB/data'
 import { InspectValue } from '../../../components/User/Incluir'
+import LapisIcon from '../../../assets/icons/lapisIcon.svg'
 import { Container, FirstMainComponent, SecondMainContainer, ThirdMainContainer, FordMainContainer } from './style'
 import { CardPai, Card, FirstContentCard } from './style'
 import { Left, Right, Pai } from './style'
@@ -15,6 +17,7 @@ function Dashboard () {
   const cardPai = useRef(null)
   const secondCardPai = useRef(null)
   const thirdCardPai = useRef(null)
+  const { role } = useAuth()
   function handleLeftClick (e) {
     if(cardPai.current) {
      e.preventDefault()
@@ -59,7 +62,7 @@ function Dashboard () {
 
   return (
    <>
-    <Container>
+    <Container style={{ width: '90%'}}>
      <FirstMainComponent>
       <Left>
        <img src={firstimageIcon}/>
@@ -74,29 +77,35 @@ function Dashboard () {
       <h1>Refeições</h1>
       <Pai>
        <button className='button_left'>
-        <img src={CaretLeft} onClick={handleLeftClick}/>
+        <img alt="" src={CaretLeft} onClick={handleLeftClick}/>
        </button>
       <CardPai ref={cardPai}>
        {dbRefeicoes.map((refeicoes) => (
         <Card key={refeicoes.id} to={`/prato/${refeicoes.id}`}>
         <FirstContentCard>
-         <img src={refeicoes.prato} id='prato'/>
-         <img src={love ? HeartCheio : Heart }
+         <img alt="" src={refeicoes.prato} id='prato'/>
+         {role === "admin" ? 
+         <img src={LapisIcon} alt="" /> 
+          :
+         <img alt="" src={love ? HeartCheio : Heart }
           onClick={(e) => {
             setLove(!love)
             e.preventDefault()
            e.stopPropagation()
-          }}/>
-         </FirstContentCard>
+          }}/> 
+        }
+          
+       </FirstContentCard>
         <h1>{refeicoes.title}</h1>
         <p>{refeicoes.explicacao}</p>
         <h2>{refeicoes.valor}</h2>
-        <InspectValue/>
+        {role === "usuario" && <InspectValue/>}
+        <div style={{ width: '100%'}} />
        </Card>
        ))}
       </CardPai>
-       <button className='button_right'>
-        <img src={CaretRight} onClick={handleRightClick}/>
+       <button type='button' className='button_right'>
+        <img alt="" src={CaretRight} onClick={handleRightClick}/>
        </button>
        </Pai>
      </SecondMainContainer>
@@ -112,17 +121,20 @@ function Dashboard () {
         <Card key={sobremesas.id} to={`/prato/${sobremesas.id}`}>
         <FirstContentCard>
          <img src={sobremesas.prato} id='prato'/>
-         <img src={love ? HeartCheio : Heart }
-           onClick={(e) => {
-             setLove(!love)
+         {role === "admin" ? 
+         <img src={LapisIcon} alt="" /> 
+          :
+         <img alt="" src={love ? HeartCheio : Heart }
+          onClick={(e) => {
+            setLove(!love)
             e.preventDefault()
            e.stopPropagation()
-           }}/>
+          }}/>}
          </FirstContentCard>
          <h1>{sobremesas.title}</h1>
         <p>{sobremesas.explicacao}</p>
-        <h2>{sobremesas.value}</h2>
-        <InspectValue/>
+        <h2>{sobremesas.valor}</h2>
+        {role === "usuario" && <InspectValue/>}
        </Card>
        ))}
       </CardPai>
@@ -143,17 +155,20 @@ function Dashboard () {
         <Card key={bebidas.id} to={`/prato/${bebidas.id}`}>
         <FirstContentCard>
          <img src={bebidas.prato} id='prato'/>
-         <img src={love ? HeartCheio : Heart }
-           onClick={(e) => {
-             setLove(!love)
+         {role === "admin" ? 
+         <img src={LapisIcon} alt="" /> 
+          :
+         <img alt="" src={love ? HeartCheio : Heart }
+          onClick={(e) => {
+            setLove(!love)
             e.preventDefault()
            e.stopPropagation()
-          }}/>
+          }}/>}
          </FirstContentCard>
         <h1>{bebidas.title}</h1>
         <p>{bebidas.explicacao}</p>
-        <h2>{bebidas.value}</h2>
-        <InspectValue/>
+        <h2>{bebidas.valor}</h2>
+        {role === "usuario" && <InspectValue/>}
        </Card>
        ))}
       </CardPai>

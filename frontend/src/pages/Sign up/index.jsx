@@ -18,7 +18,7 @@ function SignIn() {
     navigate('/')
    })
    .catch((error) => {
-    alert(error.response.data.message)
+    alert(error.message)
    })
   }
 

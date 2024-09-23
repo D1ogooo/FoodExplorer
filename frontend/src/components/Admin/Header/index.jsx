@@ -1,38 +1,42 @@
-import { Container, Logo } from './style'
-import { Search, ButtonPedidos, ButtonLoggout, Favoritos} from './style'
+import { useAuth } from '../../../hooks/useAuth'
+import { Container, Logo, StateUser, ButtonNovoPrato } from './style'
+import { Search, ButtonLoggout } from './style'
 import principalIcon from '../../../assets/icons/Polygon 1.svg'
 import searchIcon from '../../../assets/icons/search.svg'
-import receitaIcon from '../../../assets/icons/Receipt.svg'
 import loggoutIcon from '../../../assets/icons/SignOut.svg'
 
 export const HeaderAdmin = () => {
- return (
+  const { loggout, role } = useAuth()
+  
+  return (
   <>
    <Container>
     <header>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'end'}}>
      <Logo to='/'>
-      <img src={principalIcon}/>
-      <p>food explorer</p>
+      <img alt="" src={principalIcon}/>
+      <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'end', alignItems: 'end'}}>
+       <p >food explorer</p>
+      </div>
      </Logo>
+      <StateUser>
+       <h4>{role}</h4>
+      </StateUser>
+     </div>
 
      <Search>
       <div>
-       <img src={searchIcon}/>
+       <img alt="" src={searchIcon}/>
        <input type="text" placeholder='Busque por pratos ou ingredientes'/>
       </div>
      </Search>
 
-    <Favoritos to='/favoritos'>
-     <p>Meus favoritos</p>
-    </Favoritos>
+   <ButtonNovoPrato>
+    Novo prato
+   </ButtonNovoPrato>
 
-    <ButtonPedidos to='/checkinPedidos'>
-     <img src={receitaIcon}/>
-     <p>Pedidos (0)</p>
-    </ButtonPedidos>
-
-    <ButtonLoggout to='/login'>
-     <img src={loggoutIcon}/>
+    <ButtonLoggout onClick={() => loggout()}>
+     <img alt="" src={loggoutIcon}/>
     </ButtonLoggout>
     </header>
    </Container>
