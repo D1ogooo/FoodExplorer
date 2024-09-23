@@ -13,6 +13,7 @@ como também para o restaurante uma agilidade na entrega de seus produtos.
 - React-router-dom
 - Styled-components
 - RadixUI
+- ChackraUI
 ```
 
 👨‍🔬 (backend) Tecnologias Utilizadas:
