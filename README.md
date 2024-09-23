@@ -6,7 +6,7 @@ O Foodexplorer é o cardápio de um restaurante fictício onde nele podemos real
 Os clientes conseguem ter uma breve apresentação de cada prato do restaurante e realizar seus pedidos de forma digital, O que entrega não só para o cliente
 como também para o restaurante uma agilidade na entrega de seus produtos.
 
-💻 Tecnologias Utilizadas:
+👨‍💻 (frontend) Tecnologias Utilizadas:
 
 ```
 - React
@@ -14,10 +14,21 @@ como também para o restaurante uma agilidade na entrega de seus produtos.
 - Styled-components
 - RadixUI
 ```
+
+👨‍🔬 (backend) Tecnologias Utilizadas:
+
+```
+- Typescript
+- Node
+- Express
+- Prisma ORM
+- Supabase (postgresql)
+```
+
        -- Pendencias --
 
 * Construção da api porem estou com dificuldades para entender upload de imagens e principalmente com dificuldades em banco relacional
 
 * Terminar de fazer a página de edição de pratos do admin
 
-     👩‍💻👩‍💻👩‍💻 Front-end práticamente pronto.
+     👩‍💻👩‍💻👩‍💻 Front-end faltando apenas a pagina de edição dele elementos do admin.
