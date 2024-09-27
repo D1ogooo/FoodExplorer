@@ -23,7 +23,7 @@ como também para o restaurante uma agilidade na entrega de seus produtos.
 - Node
 - Express
 - Prisma ORM
-- Supabase (postgresql)
+- Neon (postgresql)
 ```
 
        -- Pendencias --
