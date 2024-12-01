@@ -18,12 +18,37 @@ model User {
   carts     Cart[]
 }
 
-model Product {
-  id    String @id @default(uuid())
-  name  String
-  valor String
-  sobre String
-  image String
+model Refeicao {
+  id           String   @id @default(uuid())
+  name         String
+  valor        String
+  sobre        String
+  image        String
+  ingredientes String[]
+
+  cartItems CartItem[]
+  favorites Favorite[]
+}
+
+model Sobremesa {
+  id           String   @id @default(uuid())
+  name         String
+  valor        String
+  sobre        String
+  image        String
+  ingredientes String[]
+
+  cartItems CartItem[]
+  favorites Favorite[]
+}
+
+model Bebida {
+  id           String   @id @default(uuid())
+  name         String
+  valor        String
+  sobre        String
+  image        String
+  ingredientes String[]
 
   cartItems CartItem[]
   favorites Favorite[]
@@ -37,20 +62,28 @@ model Cart {
 }
 
 model CartItem {
-  id        String  @id @default(uuid())
-  cart      Cart    @relation(fields: [cartId], references: [id])
-  cartId    String
-  product   Product @relation(fields: [productId], references: [id])
-  productId String
-  quantity  Int
+  id          String     @id @default(uuid())
+  cart        Cart       @relation(fields: [cartId], references: [id])
+  cartId      String
+  refeicao    Refeicao?  @relation(fields: [refeicaoId], references: [id])
+  refeicaoId  String?
+  sobremesa   Sobremesa? @relation(fields: [sobremesaId], references: [id])
+  sobremesaId String?
+  bebida      Bebida?    @relation(fields: [bebidaId], references: [id])
+  bebidaId    String?
+  quantity    Int
 }
 
 model Favorite {
-  id        String  @id @default(uuid())
-  user      User    @relation(fields: [userId], references: [id])
-  userId    String
-  product   Product @relation(fields: [productId], references: [id])
-  productId String
+  id          String     @id @default(uuid())
+  user        User       @relation(fields: [userId], references: [id])
+  userId      String
+  refeicao    Refeicao?  @relation(fields: [refeicaoId], references: [id])
+  refeicaoId  String?
+  sobremesa   Sobremesa? @relation(fields: [sobremesaId], references: [id])
+  sobremesaId String?
+  bebida      Bebida?    @relation(fields: [bebidaId], references: [id])
+  bebidaId    String?
 
-  @@unique([userId, productId])
+  @@unique([userId, refeicaoId, sobremesaId, bebidaId])
 }
