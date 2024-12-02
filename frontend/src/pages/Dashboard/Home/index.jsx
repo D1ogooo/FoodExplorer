@@ -1,3 +1,4 @@
+import React from 'react'
 import { useState, useRef } from "react";
 import { useAuth } from "../../../hooks/useAuth";
 import { dbSobremesas, dbRefeicoes, dbBebidas } from "../../../DB/data";
@@ -87,19 +88,25 @@ function Dashboard() {
 						</button>
 						<CardPai ref={cardPai}>
 							{dbRefeicoes.map((refeicoes) => (
-								<Card key={refeicoes.id} to={`/prato/${refeicoes.id}`}>
+								<Card
+									key={refeicoes.id}
+									to={
+										role === "admin" ? "/editarPrato" : `/prato/${refeicoes.id}`
+									}
+								>
 									<FirstContentCard>
 										<img alt="" src={refeicoes.prato} id="prato" />
 										{role === "admin" ? (
 											<img src={LapisIcon} alt="" />
 										) : (
+											// biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
 											<img
 												alt=""
 												src={love ? HeartCheio : Heart}
 												onClick={(e) => {
 													setLove(!love);
 													e.preventDefault();
-													e.stopPropagation();
+													// e.stopPropagation();
 												}}
 											/>
 										)}

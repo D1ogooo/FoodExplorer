@@ -1,63 +1,85 @@
+import React from 'react'
 import { useState } from "react";
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Container, Left, Form, Register } from "./style";
 import iconfoodexplorer from "../../assets/icons/Polygon 1.svg";
 import { useAuth } from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+
+const schema = z.object({
+  email: z.string().email('Email inválido').min(1, "Email não declarado"),
+  senha: z.string().min(1, 'Senha não declarada'),
+});
 
 function SignIn() {
 	const { signin } = useAuth();
 	const [email, setEmail] = useState();
 	const [password, setPassword] = useState();
 	const navigate = useNavigate();
+  
+  const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm({
+		resolver: zodResolver(schema),
+	})
 
-	function handleSubmit(e) {
-		e.preventDefault();
-		signin({ email, password })
+	function onSubmit(data, e) {
+		e.preventDefault()
+		signin({ email: data.email, password: data.senha })
 			.then(() => {
 				navigate("/");
 			})
-			.catch((error) => {
-				alert(error.response.data.message);
+			.catch(() => {
+				alert("error");
 			});
 	}
 
-	return (
-		<>
-			<Container>
-				<Left to="/">
-					<img alt="" src={iconfoodexplorer} />
-					<h2>food explorer</h2>
-				</Left>
-				<Form>
-					<h1>Faça login</h1>
-					<label id="email">
-						Email
-						<div>
-							<input
-								type="email"
-								placeholder="Exemplo: exemplo@exemplo.com.br"
-								onChange={(e) => setEmail(e.target.value)}
-							/>
-						</div>
-					</label>
-					<label>
-						Senha
-						<div className="Seunome">
-							<input
-								type="password"
-								placeholder="No mínimo 6 caracteres"
-								onChange={(e) => setPassword(e.target.value)}
-							/>
-						</div>
-					</label>
-					<input type="submit" onClick={handleSubmit} />
-					<Register href="#" to="/register" id="registro">
-						Criar uma conta
-					</Register>
-				</Form>
-			</Container>
-		</>
-	);
+  return (
+    <Container>
+      <Left to="/">
+        <img alt="" src={iconfoodexplorer} />
+        <h2>food explorer</h2>
+      </Left>
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <h1>Faça login</h1>
+
+        <label htmlFor="email">
+          Email
+          <div>
+            <input
+              id="email"
+              type="email"
+              placeholder="Exemplo: exemplo@exemplo.com.br"
+              {...register('email')}
+            />
+          </div>
+          {errors.email && <p style={{ marginTop: ".5rem"}}>{errors.email.message}</p>}
+        </label>
+
+        <label htmlFor="senha">
+          Senha
+          <div>
+            <input
+              id="senha"
+              type="password"
+              placeholder="No mínimo 6 caracteres"
+              {...register('senha')}
+            />
+          </div>
+          {errors.senha && <p style={{ marginTop: ".5rem"}}>{errors.senha.message}</p>}
+        </label>
+
+        <input type="submit" value="Entrar" />
+        <Register to="/register" id="registro">
+          Criar uma conta
+        </Register>
+      </Form>
+    </Container>
+  );
 }
 
 export default SignIn;

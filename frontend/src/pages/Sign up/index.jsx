@@ -29,8 +29,7 @@ function SignIn() {
        <img alt='' src={iconfoodexplorer}/>
        <h2>food explorer</h2>
       </Left>
-      <>
-       <Form>
+      <Form>
         <h1>Crie sua conta</h1>
         <label id="seunome">Seu nome
          <div >
@@ -54,7 +53,6 @@ function SignIn() {
          Já tenho uma conta
         </ReturnLogin>
        </Form>
-      </>
      </Container>
    </>
   )

@@ -8,13 +8,13 @@ import Marcacoes from "../../../../components/Admin/Marcacao";
 import returnIcon from "../../../../assets/icons/CaretLeft.svg";
 import UploadSimple from "../../../../assets/icons/UploadSimple.svg";
 
-function Editar() {
+function AdicionarPrato() {
 	const [opcaoSelecionada, setOpcaoSelecionada] = useState("");
 	const [listaDeMarcadores, setListaDeMarcadores] = useState(["Pão Naan"]);
 	const [name, setName] = useState("");
 
 	function deleteMark(index) {
-		let lista = [...listaDeMarcadores];
+		const lista = [...listaDeMarcadores];
 		lista.splice(index, 1);
 		setListaDeMarcadores(lista);
 	}
@@ -70,7 +70,11 @@ function Editar() {
 									{listaDeMarcadores.map((mark, index) => (
 										<CardDefault key={index}>
 											<p>{mark}</p>
-											<img src={IconClose} onClick={() => deleteMark(index)} />
+											<img
+												src={IconClose}
+												onClick={() => deleteMark(index)}
+												alt=""
+											/>
 										</CardDefault>
 									))}
 									<Marcacoes setListaDeMarcadores={setListaDeMarcadores} />
@@ -91,7 +95,7 @@ function Editar() {
 										placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
 										cols="1000"
 										rows="13"
-									></textarea>
+									/>
 								</div>
 							</label>
 						</Third>
@@ -102,4 +106,4 @@ function Editar() {
 	);
 }
 
-export default Editar;
+export default AdicionarPrato;

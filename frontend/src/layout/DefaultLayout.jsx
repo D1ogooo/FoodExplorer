@@ -1,3 +1,4 @@
+import React from 'react'
 import { useAuth } from "../hooks/useAuth";
 import { Outlet } from "react-router-dom";
 import { Footer } from "../components/Footer";
@@ -8,15 +9,11 @@ export function DefaultLayout() {
  const { role } = useAuth()
  return (
   <>
-
    {role === "usuario" ?
     <HeaderUser/> : <HeaderAdmin />
    }
     <Outlet/>
     <Footer/>
-   
-
-   
   </>
  )
 }

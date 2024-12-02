@@ -1,3 +1,4 @@
+import React from 'react'
 import { useReducer } from 'react'
 import { IncludeReducer } from '../../../reducers/Incluir'
 import { Container } from './style'

@@ -1,3 +1,4 @@
+import React from 'react'
 import { Container } from './style'
 import poligonsinza from '../../assets/icons/Polygon sinza.svg'
 

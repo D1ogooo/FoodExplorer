@@ -159,10 +159,10 @@ export const Card = styled(Link)`
   text-decoration: none;
   cursor: pointer;
  }
-
+ 
  display: flex;
  width: 20.9rem;
- height: 500px;
+ height: 31.25rem;
  padding: 1.5rem;
  flex-direction: column;
  text-align: center;
@@ -172,11 +172,11 @@ export const Card = styled(Link)`
  border: 0.0625rem solid ${({ theme }) => theme.colors.Dark.dark300};
 
  h1 {
-  margin-top: -1px;
+  margin-top: -.0625rem;
   color: ${({ theme }) => theme.colors.Light.light300};
   text-align: center;
   font-family: 'Poppins', sans-serif;
-  font-size: 22px;
+  font-size: 1.375rem;
   font-style: normal;
   font-weight: 700;
   line-height: 140%;
@@ -207,8 +207,8 @@ export const FirstContentCard = styled(Link)`
 
  :nth-child(2) {
   cursor: pointer;
-  width: 24px;
-  height: 22px;
+  width: 1.5rem;
+  height: 1.375rem;
   flex-shrink: 0;
   margin-left: -0.75rem;
   margin-top: -0.625rem;

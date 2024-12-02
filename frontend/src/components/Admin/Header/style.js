@@ -14,8 +14,9 @@ export const Container = styled.div`
  }
 `
 
-export const ButtonNovoPrato = styled.button`
+export const ButtonNovoPrato = styled(Link)`
  cursor: pointer;
+ text-decoration: none; 
  display: flex;
  width: 13.5rem;
  padding: 0.75rem 2rem;
