@@ -8,12 +8,13 @@ datasource db {
 }
 
 model User {
-  id        String     @id @default(uuid())
+  id        String   @id @default(uuid())
   name      String
-  email     String     @unique
+  email     String   @unique
   password  String
-  createdAt DateTime   @default(now())
-  role      String     @default("usuario")
+  createdAt DateTime @default(now())
+  role      String   @default("usuario")
+
   favorites Favorite[]
   carts     Cart[]
 }
@@ -32,10 +33,11 @@ model Produtos {
 }
 
 model Cart {
-  id     String     @id @default(uuid())
-  user   User       @relation(fields: [userId], references: [id])
+  id     String @id @default(uuid())
+  user   User   @relation(fields: [userId], references: [id])
   userId String
-  items  CartItem[]
+
+  items CartItem[]
 }
 
 model CartItem {

@@ -1,3 +1,4 @@
+import React from 'react'
 import { useRef } from "react";
 import { CardCreate } from './style'
 import plusbButton from '../../../assets/icons/Plus.svg'

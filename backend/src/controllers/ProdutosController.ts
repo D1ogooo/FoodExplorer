@@ -1,9 +1,8 @@
-import type { Response, Request } from "express";
 import { prisma } from "../lib/prisma";
-import { jwtConfig } from "../configs/auth";
 import path from "node:path";
+import type { Response, Request } from "express";
 
-class BebidasController {
+class ProdutosController {
 	async create(req: Request, res: Response) {
 		const authHeader = req.headers.authorization;
 		const token = authHeader?.split(" ")[1];
@@ -25,7 +24,7 @@ class BebidasController {
 				return;
 			}
 
-			await prisma.Bebida.create({
+			await prisma.Produtos.create({
 				data: {
 					name,
 					valor,
@@ -40,4 +39,4 @@ class BebidasController {
 	}
 }
 
-export { BebidasController };
+export { ProdutosController };

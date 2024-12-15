@@ -1,9 +1,11 @@
+import React from 'react'
 import { useAuth } from "../../../hooks/useAuth";
 import { Container, Logo, StateUser, ButtonNovoPrato } from "./style";
 import { Search, ButtonLoggout } from "./style";
 import principalIcon from "../../../assets/icons/Polygon 1.svg";
 import searchIcon from "../../../assets/icons/search.svg";
 import loggoutIcon from "../../../assets/icons/SignOut.svg";
+
 
 export const HeaderAdmin = () => {
 	const { loggout, role } = useAuth();

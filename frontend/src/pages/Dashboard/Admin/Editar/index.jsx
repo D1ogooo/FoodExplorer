@@ -1,3 +1,4 @@
+import React from 'react'
 import { useState } from "react";
 import { Container, PaiContainer, Return } from "../../Prato/style";
 import { TitleMark, MarkContainer, MarkExternal, CardDefault } from "./style";
