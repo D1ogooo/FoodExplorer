@@ -11,11 +11,20 @@ import UploadSimple from "../../../../assets/icons/UploadSimple.svg";
 
 
 function AdicionarPrato() {
+  const [stateToast, setStateToast] = useState(false)
   const [opcaoSelecionada, setOpcaoSelecionada] = useState("");
   const [listaDeMarcadores, setListaDeMarcadores] = useState(["Pão Naan"]);
   const [name, setName] = useState("")
+  const [image, setImage] = useState(null);
   const [valor, setValor] = useState()
   const [sobre, setSobre] = useState("")
+
+  function handleImage(e) {
+		const file = e.target.files?.[0];
+		if (file) {
+			setImage(file);
+		}
+	}
 
   function deleteMark(index) {
     const lista = [...listaDeMarcadores];
@@ -23,22 +32,28 @@ function AdicionarPrato() {
     setListaDeMarcadores(lista);
   }
 
-  function handleSubmit () {
-    console.log("Dados do Formulário: ", data);
-
+  function handleSubmit() {
     const formData = new FormData();
     formData.append("name", name);
     formData.append("valor", valor);
     formData.append("sobre", sobre);
     formData.append("categoria", opcaoSelecionada);
-    formData.append("ingredientes", listaDeMarcadores);
+    formData.append("ingredientes", JSON.stringify(listaDeMarcadores));
+    
 
-    if (data.image) {
-      formData.append("image", data.image);
+    if(!opcaoSelecionada) {
+     alert("é necessário declara a categoria do produto")
     }
-
+    
+    if (!image) {
+      alert("é necessário declarar uma imagem");
+      return;
+    }
+  
+    formData.append("image", image);
+  
     api
-      .post("/produtosa/create", formData, {
+      .post("/produtos/create", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       })
       .then(() => {
@@ -48,11 +63,12 @@ function AdicionarPrato() {
         console.error(error);
         alert("Erro ao criar o produto");
       });
-  };
+  }
 
   return (
     <>
       <PaiContainer>
+        {stateToast && <Toast message={"É necessário declarar uma imagem"}/>}
         <Return to="/">
           <img src={returnIcon} alt="" />
           <p>voltar</p>
@@ -69,7 +85,7 @@ function AdicionarPrato() {
                     <input
                       type="file"
                       accept="image/*"
-                      
+                      onChange={handleImage}
                     />
                   </div>
                 </label>
@@ -81,6 +97,7 @@ function AdicionarPrato() {
                     <input
                       type="text"
                       placeholder="Ex.: Salada Ceasar"
+                      onChange={(e) => setName(e.target.value)}
                     />
                   </div>
                 </label>
@@ -89,9 +106,9 @@ function AdicionarPrato() {
                 <label id="option_categoria">
                   Categoria
                   <select onChange={(e) => setOpcaoSelecionada(e.target.value)}>
-                    <option value="opcao1">Refeição</option>
-                    <option value="opcao2">Sobremesas</option>
-                    <option value="opcao3">Bebidas</option>
+                    <option value="refeicao">Refeição</option>
+                    <option value="sobremesas">Sobremesas</option>
+                    <option value="bebidas">Bebidas</option>
                   </select>
                 </label>
               </Terceiro>
@@ -117,7 +134,7 @@ function AdicionarPrato() {
               <label id="valor_select">
                 <p>Preço</p>
                 <div>
-                  <input type="number" placeholder="R$ 00,00" />
+                  <input type="number" placeholder="R$ 00,00" onChange={(e) => setValor(e.target.value)}/>
                 </div>
               </label>
             </Second>
@@ -129,7 +146,7 @@ function AdicionarPrato() {
                     placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
                     cols="1000"
                     rows="13"
-                  
+                    onChange={(e) => setSobre(e.target.value)}
                   />
                 </div>
               </label>

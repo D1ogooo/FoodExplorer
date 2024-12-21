@@ -18,18 +18,21 @@ class ProdutosController {
       }
 
       const image = req.file.path;
-
+       
+      
+      console.log(name,valor,sobre,ingredientes,categoria)
+      
       await prisma.produtos.create({
         data: {
           name,
-          valor,
+          valor: Number(valor),
           sobre,
           image,
-          ingredientes,
+          ingredientes: JSON.parse(ingredientes),
           categoria,
         },
       });
-
+       console.log("Sucesso")
       res.status(201).json({ message: "Produto criado com sucesso!" });
 
     } catch (error) {
