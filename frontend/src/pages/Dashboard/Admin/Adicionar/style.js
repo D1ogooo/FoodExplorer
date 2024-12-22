@@ -290,7 +290,7 @@ export const For = styled.section`
   gap: 1rem;
   margin-top: 2rem;
 
-  input:nth-child(1){
+  button:nth-child(1){
   align-self: stretch;
   cursor: pointer;
   border: none;

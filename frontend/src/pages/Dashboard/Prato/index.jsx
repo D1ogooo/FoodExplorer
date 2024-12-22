@@ -1,3 +1,4 @@
+import React from 'react'
 import { IncluirInspecionar } from '../../../components/User/incluir_inspecionar'
 import { InspectValue } from '../../../components/User/Incluir'
 import { Container, Return, Principal, PaiContainer, Ingredientes } from './style'
@@ -11,13 +12,13 @@ function Prato () {
   <>
    <PaiContainer>
     <Return to='/'>
-     <img src={returnIcon}/>
+     <img src={returnIcon} alt=""/>
      <p>voltar</p>
     </Return>
     <Container>
     <Principal>
      <Left>
-      <img src={testePrato}/>
+      <img src={testePrato} alt=""/>
      </Left>
      <Right>
       <h1>Salada Ravanello</h1>

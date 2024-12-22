@@ -1,4 +1,5 @@
-import { useReducer } from 'react'
+
+import React,{ useReducer } from 'react'
 import { IncludeReducer } from '../../../reducers/Incluir'
 import { Container, Internal } from './style'
 import AdicionarIcon from '../../../assets/icons/Plus.svg'

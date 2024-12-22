@@ -40,11 +40,26 @@ function AdicionarPrato() {
     formData.append("categoria", opcaoSelecionada);
     formData.append("ingredientes", JSON.stringify(listaDeMarcadores));
     
+    if(!name) {
+      alert("é necessário declarar o nome do produto")
+    }
+
+    if(!valor) {
+     alert("é necessário declarar o valor do produto")
+    }
+    
+    if(!sobre) {
+      alert("é necessário deixar um pequeno texto falando sobre o produto")
+    }
 
     if(!opcaoSelecionada) {
      alert("é necessário declara a categoria do produto")
     }
     
+    if(!listaDeMarcadores) {
+     alert("é necessário declarar os ingredientes do produto")
+    }
+
     if (!image) {
       alert("é necessário declarar uma imagem");
       return;

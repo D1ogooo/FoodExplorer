@@ -23,6 +23,8 @@ route.post(
 	Produtos.create,
 ); // rota para criar um prato
 
+route.get("/produtos/show", AuthMiddleWare, Produtos.show);
+
 //carrinho
 route.post("/cart/create", AuthMiddleWare, Carts.create);
 
