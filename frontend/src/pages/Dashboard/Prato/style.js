@@ -79,6 +79,7 @@ export const Ingredientes = styled.div`
  display: flex;
  justify-content: center;
  align-items: center;
+ flex-wrap: wrap;
  gap: 0.75rem;
  margin-bottom: 48px;
 

@@ -10,7 +10,6 @@ import {
 } from "./style";
 import { Left, Right } from "./style";
 import returnIcon from "../../../assets/icons/CaretLeft.svg";
-import testePrato from "../../../assets/pratos/molla.svg";
 import { api } from "../../../services/api";
 import { useParams } from "react-router-dom";
 
@@ -67,42 +66,5 @@ export default function Prato() {
       </PaiContainer>
     </>
   );
-  
 }
 
-
-
-//   return (
-//     <>
-//       <PaiContainer>
-//         <Return to="/">
-//           <img src={returnIcon} alt="Voltar" />
-//           <p>Voltar</p>
-//         </Return>
-//         <Container>
-//           <Principal>
-//             <Left>
-//               <img src={data.image} alt={data.name} />  {/* Exibindo a imagem do prato */}
-//             </Left>
-//             <Right>
-//               <h1>{data.name}</h1>  {/* Exibindo o nome do prato */}
-//               <p>{data.sobre}</p>  {/* Exibindo a descrição do prato */}
-//               <Ingredientes>
-//                 <div>
-//                   <h3>Ingredientes:</h3>
-//                   <ul>
-//                     {data.ingredientes.map((ingrediente, index) => (
-//                       <li key={index}>{ingrediente}</li>  {/* Exibindo a lista de ingredientes */}
-//                     ))}
-//                   </ul>
-//                 </div>
-//               </Ingredientes>
-//               <h2>R$ {data.valor}</h2>  {/* Exibindo o valor do prato */}
-//               <IncluirInspecionar />  {/* Componente de incluir ou inspecionar */}
-//             </Right>
-//           </Principal>
-//         </Container>
-//       </PaiContainer>
-//     </>
-//   );
-// }
