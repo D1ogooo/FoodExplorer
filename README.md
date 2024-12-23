@@ -22,13 +22,10 @@ como também para o restaurante uma agilidade na entrega de seus produtos.
 - Express
 - Prisma ORM
 - Neon (postgresql)
+- Cloudanary para armazenamento de imagens
 ```
 
-       -- Pendencias --
-
-* Construção da api porem estou com dificuldades para entender upload de imagens e principalmente com dificuldades em banco relacional
-
-* Terminar de fazer a página de edição de pratos do admin
-
-     👩‍💻👩‍💻👩‍💻 Front-end faltando apenas a pagina de edição dele elementos do admin.
-"# FoodExplorer" 
+       👩‍💻 -- Pendencias -- 👩‍💻
+* Integrar a pagina de favoritos
+* Integrar a pagina de pagamentos
+* Integrar a aba de detalhes do produto
