@@ -15,7 +15,7 @@ function Editar() {
 	const [name, setName] = useState("");
 
 	function deleteMark(index) {
-		let lista = [...listaDeMarcadores];
+		const lista = [...listaDeMarcadores];
 		lista.splice(index, 1);
 		setListaDeMarcadores(lista);
 	}
@@ -24,7 +24,7 @@ function Editar() {
 		<>
 			<PaiContainer>
 				<Return to="/">
-					<img src={returnIcon} />
+					<img src={returnIcon} alt=""/>
 					<p>voltar</p>
 				</Return>
 				<Container>
@@ -35,7 +35,7 @@ function Editar() {
 								<label id="select_image">
 									Imagem do prato
 									<div>
-										<img src={UploadSimple} />
+										<img src={UploadSimple} alt=""/>
 										<input type="file" accept="image/*" />
 									</div>
 								</label>
@@ -71,7 +71,7 @@ function Editar() {
 									{listaDeMarcadores.map((mark, index) => (
 										<CardDefault key={index}>
 											<p>{mark}</p>
-											<img src={IconClose} onClick={() => deleteMark(index)} />
+											<img src={IconClose} onClick={() => deleteMark(index)} alt=""/>
 										</CardDefault>
 									))}
 									<Marcacoes setListaDeMarcadores={setListaDeMarcadores} />

@@ -25,6 +25,8 @@ route.post(
 
 route.get("/produtos/show", AuthMiddleWare, Produtos.show);
 
+route.get("/produtos/find/:id", AuthMiddleWare, Produtos.find);
+
 //carrinho
 route.post("/cart/create", AuthMiddleWare, Carts.create);
 

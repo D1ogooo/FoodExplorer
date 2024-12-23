@@ -86,6 +86,8 @@ export const Ingredientes = styled.div`
   border-radius: 0.3125rem;
   background: ${({theme}) => theme.colors.Dark.dark1000};
   padding: 0.25rem 0.5rem;
+  display: flex;
+  gap: 0.75rem;
   
   p {
    color: ${({theme}) => theme.colors.Light.light100};

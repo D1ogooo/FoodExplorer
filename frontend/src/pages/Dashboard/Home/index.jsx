@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef, } from 'react'
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import { useAuth } from "../../../hooks/useAuth";
-import { dbSobremesas, dbRefeicoes, dbBebidas } from "../../../DB/data";
+import { api } from "../../../services/api";
 import { InspectValue } from "../../../components/User/Incluir";
 import LapisIcon from "../../../assets/icons/lapisIcon.svg";
 import {
@@ -17,7 +17,6 @@ import Heart from "../../../assets/icons/Heart vazio.svg";
 import HeartCheio from "../../../assets/icons/Heart cheio.svg";
 import CaretLeft from "../../../assets/icons/CaretLeft.svg";
 import CaretRight from "../../../assets/icons/CaretRight.svg";
-import { api } from '../../../services/api';
 
 function Dashboard() {
 	const [love, setLove] = useState(false);
@@ -27,22 +26,27 @@ function Dashboard() {
 	const thirdCardPai = useRef(null);
 	const { role } = useAuth();
 
-   useEffect(() => {
-    api.get("/produtos/show")
-		.then((res) => {
-			setData(res.data.products)
-		})
-		.catch((e) => {
-			console.log("Falha",e)
-			setData([])
-		})
-	 }, [])
+	useEffect(() => {
+		api
+			.get("/produtos/show")
+			.then((res) => {
+				setData(res.data.products);
+			})
+			.catch((e) => {
+				console.log("Falha", e);
+				setData([]);
+			});
+	}, []);
 
-	 const filterRefeicoes = data.filter((aliment) => aliment.categoria === "refeicao")
-	 const filterSobremesas = data.filter((aliment) => aliment.categoria === "sobremesas")
-	 const filterBebidas = data.filter((aliment) => aliment.categoria === "bebidas")
-
-  console.log(filterRefeicoes)
+	const filterRefeicoes = data.filter(
+		(aliment) => aliment.categoria === "refeicao",
+	);
+	const filterSobremesas = data.filter(
+		(aliment) => aliment.categoria === "sobremesas",
+	);
+	const filterBebidas = data.filter(
+		(aliment) => aliment.categoria === "bebidas",
+	);
 
 	function handleLeftClick(e) {
 		if (cardPai.current) {
@@ -102,8 +106,12 @@ function Dashboard() {
 				<SecondMainContainer>
 					<h1>Refeições</h1>
 					<Pai>
-						<button className="button_left" type="button" onClick={handleLeftClick}>
-							<img src={CaretLeft}  alt="" />
+						<button
+							className="button_left"
+							type="button"
+							onClick={handleLeftClick}
+						>
+							<img src={CaretLeft} alt="" />
 						</button>
 						<CardPai ref={cardPai}>
 							{filterRefeicoes.map((refeicoes) => (
@@ -118,15 +126,16 @@ function Dashboard() {
 										{role === "admin" ? (
 											<img src={LapisIcon} alt="" />
 										) : (
-											<button type='button' onClick={(e) => {
-												setLove(!love);
-												e.preventDefault();
-												// e.stopPropagation();
-											}}>
-												<img
-												alt=""
-												src={love ? HeartCheio : Heart}
-											/>
+											<button
+											  id="loveButton"
+												type="button"
+												onClick={(e) => {
+													setLove(!love);
+													e.preventDefault();
+													// e.stopPropagation();
+												}}
+											>
+												<img alt="" src={love ? HeartCheio : Heart} />
 											</button>
 										)}
 									</FirstContentCard>
@@ -138,8 +147,12 @@ function Dashboard() {
 								</Card>
 							))}
 						</CardPai>
-						<button type="button" className="button_right" onClick={handleRightClick}>
-							<img src={CaretRight}  alt="" />
+						<button
+							type="button"
+							className="button_right"
+							onClick={handleRightClick}
+						>
+							<img src={CaretRight} alt="" />
 						</button>
 					</Pai>
 				</SecondMainContainer>
@@ -147,26 +160,30 @@ function Dashboard() {
 				<ThirdMainContainer>
 					<h1>Sobremesas</h1>
 					<Pai>
-						<button className="button_left" type="button" onClick={handleLeftClickSecond}>
+						<button
+							className="button_left"
+							type="button"
+							onClick={handleLeftClickSecond}
+						>
 							<img src={CaretLeft} alt="" />
 						</button>
 						<CardPai ref={secondCardPai}>
 							{filterSobremesas.map((sobremesas) => (
 								<Card key={sobremesas.id} to={`/prato/${sobremesas.id}`}>
 									<FirstContentCard>
-										<img src={sobremesas.image} id="prato" alt=""/>
+										<img src={sobremesas.image} id="prato" alt="" />
 										{role === "admin" ? (
 											<img src={LapisIcon} alt="" />
 										) : (
-											<button type='button' onClick={(e) => {
-												setLove(!love);
-												e.preventDefault();
-												// e.stopPropagation();
-											}}>
-												<img
-												alt=""
-												src={love ? HeartCheio : Heart}
-											/>
+											<button
+												type="button"
+												onClick={(e) => {
+													setLove(!love);
+													e.preventDefault();
+													// e.stopPropagation();
+												}}
+											>
+												<img alt="" src={love ? HeartCheio : Heart} />
 											</button>
 										)}
 									</FirstContentCard>
@@ -177,7 +194,11 @@ function Dashboard() {
 								</Card>
 							))}
 						</CardPai>
-						<button className="button_right" type="button" onClick={handleRightClickSecond}>
+						<button
+							className="button_right"
+							type="button"
+							onClick={handleRightClickSecond}
+						>
 							<img src={CaretRight} alt="" />
 						</button>
 					</Pai>
@@ -186,7 +207,11 @@ function Dashboard() {
 				<FordMainContainer>
 					<h1>Bebidas</h1>
 					<Pai>
-						<button className="button_left" type="button" onClick={handleLeftClickThird}>
+						<button
+							className="button_left"
+							type="button"
+							onClick={handleLeftClickThird}
+						>
 							<img src={CaretLeft} alt="" />
 						</button>
 						<CardPai ref={thirdCardPai}>
@@ -197,15 +222,15 @@ function Dashboard() {
 										{role === "admin" ? (
 											<img src={LapisIcon} alt="" />
 										) : (
-											<button type='button' onClick={(e) => {
-												setLove(!love);
-												e.preventDefault();
-												// e.stopPropagation();
-											}}>
-												<img
-												alt=""
-												src={love ? HeartCheio : Heart}
-											/>
+											<button
+												type="button"
+												onClick={(e) => {
+													setLove(!love);
+													e.preventDefault();
+													// e.stopPropagation();
+												}}
+											>
+												<img alt="" src={love ? HeartCheio : Heart} />
 											</button>
 										)}
 									</FirstContentCard>
@@ -216,7 +241,11 @@ function Dashboard() {
 								</Card>
 							))}
 						</CardPai>
-						<button className="button_right" type="button" onClick={handleRightClickThird}>
+						<button
+							className="button_right"
+							type="button"
+							onClick={handleRightClickThird}
+						>
 							<img src={CaretRight} alt="" />
 						</button>
 					</Pai>

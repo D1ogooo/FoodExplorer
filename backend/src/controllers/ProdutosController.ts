@@ -54,8 +54,26 @@ class ProdutosController {
       const products = await prisma.produtos.findMany();
       res.status(200).json({ products })
     } catch (error) {
-      console.error("Erro ao criar o produto:", error);
-      res.status(500).json({ error: "Erro interno ao criar o produto", details: error });
+      res.status(500).json({ error: "Erro ao tentar exibir produto", details: error });
+    }
+  }
+
+  async find(req: Request, res: Response) {
+    const authHeader = req.headers.authorization;
+    const token = authHeader?.split(" ")[1];
+
+    if (!token) {
+      return res.status(401).json({ error: "Token inválido" });
+    }
+
+    try {
+      const { id } = req.params
+      const findProduct = await prisma.produtos.findUnique({
+        where: { id },
+      })
+     res.status(200).json({ findProduct });
+    } catch (error) {
+      res.status(500).json({ error: "Erro ao tentar exibir produto", details: error });
     }
   }
 

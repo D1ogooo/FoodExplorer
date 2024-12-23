@@ -47,11 +47,14 @@ export const StateUser = styled.div`
  }
 `
 
-export const Logo = styled(Link)`
+export const Logo = styled.button`
  display: flex;
  align-items: center;
  gap: 0.625rem;
  text-decoration: none;
+ background: none;
+ border: none;
+ cursor: pointer;
 
  img {
   width: 2rem;
