@@ -28,4 +28,4 @@ como também para o restaurante uma agilidade na entrega de seus produtos.
        👩‍💻 -- Pendencias -- 👩‍💻
 * Integrar a pagina de favoritos
 * Integrar a pagina de pagamentos
-* Integrar a aba de detalhes do produto
+* Integrar a aba de detalhes do produto ✔
