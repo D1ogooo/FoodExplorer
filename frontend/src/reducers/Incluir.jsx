@@ -3,7 +3,7 @@ export const IncludeReducer = (state, action) => {
  case 'Increment':
   return { ...state, count: state.count +1 }  
  case 'Decrement':
-  return { ...state, count: state.count -1 >= 0 ? state.count -1 : 0 }
+  return { ...state, count: state.count -1 >= 1 ? state.count -1 : 1 }
  default: 
   return "This action doens't exist"
  }

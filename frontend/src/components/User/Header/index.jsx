@@ -6,12 +6,15 @@ import principalIcon from "../../../assets/icons/Polygon 1.svg";
 import searchIcon from "../../../assets/icons/search.svg";
 import receitaIcon from "../../../assets/icons/Receipt.svg";
 import loggoutIcon from "../../../assets/icons/SignOut.svg";
+import { useNavigate } from 'react-router-dom';
 
 export const HeaderUser = () => {
 	const { loggout, role } = useAuth();
+	const navigate = useNavigate()
 	
-	function handleLoggout() {
-		loggout();
+	async function handleLoggout() {
+		await loggout();
+		navigate("/");
 	}
 
 	return (

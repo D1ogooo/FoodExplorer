@@ -3,12 +3,13 @@ import styled from "styled-components";
 export const Container = styled.div`
  display: flex;
  align-items: center;
+ justify-content: center;
  gap: 2.6rem;
  width: 100%;
  
  p {
   font-family: 'Roboto', sans-serif;
-  font-size: 1.125rem;
+  font-size: 18px;
  }
  
  #incluir {
@@ -33,12 +34,15 @@ export const Container = styled.div`
   cursor: pointer;
   background: none;
   border: none;
+  height: 20px;
  }
 
  #increment {
   cursor: pointer;
   background: none;
   border: none;
+  height: 20px;
+  margin-top: 1rem;
  }
 `
 

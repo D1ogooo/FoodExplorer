@@ -1,6 +1,8 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { Toast } from "../../../components/toast";
+import { api } from "../../../services/api";
 import { Container, Pai, CardContent, Card } from "./style";
 import { Left, Right, First, Second, ButtonExcluir } from "./style";
 import { CardPagamento } from "./style";
@@ -10,11 +12,39 @@ import pixIcon from "../../../assets/icons/PIX.svg";
 import creditIcon from "../../../assets/icons/CreditCard.svg";
 import qrcodeIcon from "../../../assets/icons/qrcode pix.svg";
 import receitaIcon from "../../../assets/icons/Receipt.svg";
+import { useNavigate } from "react-router-dom";
 
 const createUserFormSchema = z.object({});
 
 function Pedidos() {
+	const [stateToast, setStateToast] = useState(false);
 	const [output, setOutput] = useState("");
+	const navigate = useNavigate();
+	const [data, setData] = useState([]);
+
+	useEffect(() => {
+		api
+			.get("/cart/list")
+			.then((res) => {
+				// setData(res.data.itensList.map((e) => (
+				// 	e.items.map((a) => {
+				// 		console.log(a.produtos)
+				// 	})
+				// )))
+				setData(res.data.itensList.map((item) => item));
+			})
+			.catch((e) => {
+				console.log(e);
+			});
+	}, []);
+
+	function handleToast() {
+		setStateToast(true);
+		setTimeout(() => {
+			setStateToast(false);
+			navigate("/");
+		}, 2500);
+	}
 
 	const [image, setImage] = useState(false);
 	function handleImage(id) {
@@ -26,61 +56,36 @@ function Pedidos() {
 		setOutput(JSON.stringify(data, null, 2));
 	}
 
+	console.log(data);
 	return (
 		<>
+			{stateToast && <Toast />}
 			<Container>
 				<Pai>
 					<Left>
 						<h1>Meu pedido</h1>
 						<CardContent>
-							<Card>
-								<First>
-									<img src={exemploPrato} alt="" />
-								</First>
-								<Second>
-									<p>1 x Salada Radish</p>
-									<div>
-										<ButtonExcluir>Excluir</ButtonExcluir>
-									</div>
-								</Second>
-								<span>R$ 25,97</span>
-							</Card>
-							<Card>
-								<First>
-									<img src={exemploPrato} alt="" />
-								</First>
-								<Second>
-									<p>1 x Salada Radish</p>
-									<div>
-										<ButtonExcluir>Excluir</ButtonExcluir>
-									</div>
-								</Second>
-								<span>R$ 25,97</span>
-							</Card>
-							<Card>
-								<First>
-									<img src={exemploPrato} alt="" />
-								</First>
-								<Second>
-									<p>1 x Salada Radish</p>
-									<div>
-										<ButtonExcluir>Excluir</ButtonExcluir>
-									</div>
-								</Second>
-								<span>R$ 25,97</span>
-							</Card>
-							<Card>
-								<First>
-									<img src={exemploPrato} alt="" />
-								</First>
-								<Second>
-									<p>1 x Salada Radish</p>
-									<div>
-										<ButtonExcluir>Excluir</ButtonExcluir>
-									</div>
-								</Second>
-								<span>R$ 25,97</span>
-							</Card>
+							{data.map((cart) =>
+								cart.items.map((item) => (
+									<Card key={item.id}>
+										<First>
+											<img
+												src={item.produtos.image}
+												alt={""}
+											/>
+										</First>
+										<Second>
+											<p>
+												{item.quantity} x {item.produtos?.name || "Produto"}
+											</p>
+											<div>
+												<ButtonExcluir>Excluir</ButtonExcluir>
+											</div>
+										</Second>
+										<span>R$ {item.produtos?.valor?.toFixed(2) || "0.00"}</span>
+									</Card>
+								)),
+							)}
 						</CardContent>
 						<span className="totalValue">Total: R$ 103,88</span>
 					</Left>

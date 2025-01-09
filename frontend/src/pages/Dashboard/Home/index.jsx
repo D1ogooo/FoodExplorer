@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import { useAuth } from "../../../hooks/useAuth";
+import { useDebounceClick } from "../../../hooks/useDebounceClick";
 import { api } from "../../../services/api";
 import { InspectValue } from "../../../components/User/Incluir";
 import LapisIcon from "../../../assets/icons/lapisIcon.svg";
@@ -9,6 +10,7 @@ import {
 	SecondMainContainer,
 	ThirdMainContainer,
 	FordMainContainer,
+	ImagemPrato,
 } from "./style";
 import { CardPai, Card, FirstContentCard } from "./style";
 import { Left, Right, Pai } from "./style";
@@ -20,11 +22,13 @@ import CaretRight from "../../../assets/icons/CaretRight.svg";
 
 function Dashboard() {
 	const [love, setLove] = useState(false);
+	const [favorite, setFavorite] = useState([]);
 	const [data, setData] = useState([]);
 	const cardPai = useRef(null);
 	const secondCardPai = useRef(null);
 	const thirdCardPai = useRef(null);
 	const { role } = useAuth();
+	const debounceClick = useDebounceClick(favoriteToggle);
 
 	useEffect(() => {
 		api
@@ -90,6 +94,35 @@ function Dashboard() {
 		}
 	}
 
+	// async function favoriteToggle(id) {
+	// 	setFavorite((prevFavorite) => {
+	// 		if(prevFavorite.includes(id)) { // Caso já esteja favoritado
+	// 			return prevFavorite.filter((favoritoId) => (favoritoId !== id))
+
+	// 		}
+	// 			return [...prevFavorite, id]; // Caso não esteja favoritado
+	// 	});
+	// }
+
+	function favoriteToggle(id) {
+		// setFavorite((prevFavorite) => {
+		// 	if(prevFavorite.includes(id)) { // Caso já esteja favoritado
+		// 		return prevFavorite.filter((favoritoId) => (favoritoId !== id))
+		// 	}
+		// 		return [...prevFavorite, id]; // Caso não esteja favoritado
+		// });
+		api
+			.post("/favorito/create", {
+				id: id,
+			})
+			.then((res) => {
+				// console.log(res);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	}
+
 	return (
 		<>
 			<Container style={{ width: "90%" }}>
@@ -122,27 +155,40 @@ function Dashboard() {
 									}
 								>
 									<FirstContentCard>
-										<img alt="" src={refeicoes.image} id="prato" />
+										<ImagemPrato
+											to={
+												role === "admin"
+													? "/editarPrato"
+													: `/prato/${refeicoes.id}`
+											}
+										>
+											<img alt="" src={refeicoes.image} id="prato" />
+										</ImagemPrato>
 										{role === "admin" ? (
 											<img src={LapisIcon} alt="" />
 										) : (
 											<button
-											  id="loveButton"
+												id="loveButton"
 												type="button"
 												onClick={(e) => {
-													setLove(!love);
-													e.preventDefault();
-													// e.stopPropagation();
+													e.preventDefault()
+													e.stopPropagation()
+													setLove(!love)
 												}}
 											>
-												<img alt="" src={love ? HeartCheio : Heart} />
+												<img
+													src={
+														favorite.includes(refeicoes.id) ? HeartCheio : Heart
+													}
+													alt=""
+												/>
 											</button>
 										)}
 									</FirstContentCard>
 									<h1>{refeicoes.name}</h1>
 									<p>{refeicoes.sobre}</p>
 									<h2>R$ {refeicoes.valor}</h2>
-									{role === "usuario" && <InspectValue />}
+									{role === "usuario" && <InspectValue cartId={refeicoes.id}/>}
 									<div style={{ width: "100%" }} />
 								</Card>
 							))}

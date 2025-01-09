@@ -1,3 +1,5 @@
+import React from "react"
+
 function Pagina_404 () { 
  return (
   <>

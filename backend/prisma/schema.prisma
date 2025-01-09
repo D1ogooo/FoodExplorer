@@ -46,16 +46,18 @@ model CartItem {
   cartId String
 
   produtos   Produtos? @relation(fields: [produtosId], references: [id])
-  produtosId String?
+  produtosId String
   quantity   Int
+
+  @@unique([cartId, produtosId])
 }
 
 model Favorite {
   id         String    @id @default(uuid())
   user       User      @relation(fields: [userId], references: [id])
   userId     String
-  produtos   Produtos? @relation(fields: [produtosId], references: [id])
-  produtosId String?
+  produtos   Produtos  @relation(fields: [produtosId], references: [id])
+  produtosId String
 
   @@unique([userId, produtosId])
 }

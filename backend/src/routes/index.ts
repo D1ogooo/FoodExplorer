@@ -29,8 +29,12 @@ route.get("/produtos/find/:id", AuthMiddleWare, Produtos.find);
 
 //carrinho
 route.post("/cart/create", AuthMiddleWare, Carts.create);
+route.get("/cart/list", AuthMiddleWare, Carts.list);
+route.delete("/cart/delete", AuthMiddleWare, Carts.delete);
 
 //favoritos
+route.get("/favorito/list", AuthMiddleWare, Favorito.list);
 route.post("/favorito/create", AuthMiddleWare, Favorito.create);
+route.delete("/favorito/delete/:id", AuthMiddleWare, Favorito.delete);
 
 export { route };

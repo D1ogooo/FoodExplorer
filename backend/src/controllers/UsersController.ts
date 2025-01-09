@@ -21,7 +21,7 @@ class UsersController {
 			return res.status(401).json({ error: "Senha inválida" });
 		}
 
-		const token = jwt.sign({ role: emailExist.role }, jwtConfig.secret, {
+		const token = jwt.sign({ role: emailExist.role, id: emailExist.id }, jwtConfig.secret, {
 			expiresIn: jwtConfig.expiresIn,
 		});
 		const user = {

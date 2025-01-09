@@ -83,7 +83,9 @@ export const Right = styled.section`
 `
 
 export const CardContent = styled.div`
- 
+ height: 490px;
+ overflow-y: auto;
+ overflow-x: hidden;
 `
 
 export const Card = styled.div`

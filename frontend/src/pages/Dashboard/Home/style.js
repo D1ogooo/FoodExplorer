@@ -154,7 +154,7 @@ export const CardPai = styled.div`
  }
 `
 
-export const Card = styled(Link)`
+export const Card = styled.div`
   & {
     text-decoration: none;
     cursor: pointer;
@@ -176,20 +176,20 @@ export const Card = styled(Link)`
     color: ${({ theme }) => theme.colors.Light.light300};
     text-align: center;
     font-family: 'Poppins', sans-serif;
-    font-size: 1.375rem;
+    font-size: 22px;
     font-style: normal;
     font-weight: 700;
-    line-height: 140%;
+    line-height: 33.6px;
   }
 
   p {
     color: ${({ theme }) => theme.colors.Light.light400};
     text-align: center;
     font-family: 'Roboto', sans-serif;
-    font-size: .875rem;
+    font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: 160%;
+    line-height: 22.4px;
   }
 
   img {
@@ -209,17 +209,23 @@ export const FirstContentCard = styled(Link)`
   display: flex;
   justify-content: center;
   scroll-behavior: smooth;
-  padding: 24px;
+  padding: 2px;
   
   #prato {
     width: 100%;
-    height: auto;
+    height: 200px;
     flex-shrink: 0;
   }
 
   button {
     background: none;
     border: none;
+    position: relative;
+    left: 0;
+    top: 0;
+  }
+  
+  #loveButton {
   }
 
   :nth-child(2) {
@@ -230,4 +236,8 @@ export const FirstContentCard = styled(Link)`
     margin-left: -0.75rem;
     margin-top: -0.625rem;
   }
+`
+
+export const ImagemPrato = styled(Link)`
+ 
 `

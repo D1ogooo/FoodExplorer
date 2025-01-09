@@ -5,7 +5,6 @@ export const Container = styled.div`
  margin: 0 auto;
 `
 
-
 export const PratosContent = styled.section`
  width: 100%;
  gap: 48px;
