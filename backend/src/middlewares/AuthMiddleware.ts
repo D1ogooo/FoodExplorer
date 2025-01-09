@@ -10,7 +10,7 @@ function AuthMiddleWare(req: Request, res: Response, next: NextFunction) {
 		jwt.verify(token, jwtConfig.secret);
 		next();
 	} catch (error) {
-		return res.status(401).json({ error: "Token não authorizado" });
+		return res.status(401).json({ error: "Acesso negado" });
 	}
 }
 

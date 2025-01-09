@@ -37,7 +37,7 @@ export const IncluirInspecionar = ({ valor }) => {
 
   return (
    <>
-    {stateToast && <Toast />}
+    {stateToast && <Toast message={"Produto adiconado ao carrinho!"}/>}
     <Container>
      <Internal>
      <button type="button" id='decrement' onClick={() => dispatch({type: 'Decrement'})}><img src={DecrementarIcon} alt=""/></button>

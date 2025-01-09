@@ -2,20 +2,23 @@ import React from "react";
 import { ToastStyle } from "./style";
 import { CheckCheck } from 'lucide-react';
 
-export function Toast() {
+export function Toast({ message = "Operation successful!" }) {
   return (
     <ToastStyle>
-     <section>
-      <CheckCheck style={{ color: "#fff", 
-      borderRadius: "20px",
-        // background: "#fff",
-        height: "30px",
-        width: "30px",
-        padding: "4px",
-        border: "solid 1px #fff"}}/>
-      <p style={{ fontSize: "1.25rem"}}>Operation successful!</p>
-     </section>
-     <section/>
+      <section>
+        <CheckCheck 
+          style={{
+            color: "#fff",
+            borderRadius: "20px",
+            height: "30px",
+            width: "30px",
+            padding: "4px",
+            border: "solid 1px #fff"
+          }}
+        />
+        <p style={{ fontSize: "1.25rem" }}>{message}</p>
+      </section>
+      <section />
     </ToastStyle>
-  )
+  );
 }

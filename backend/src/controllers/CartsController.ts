@@ -7,22 +7,22 @@ import type { CustomJwtPayload } from "../../@types/types";
 class CartsController {
 	async create(req: Request, res: Response) {
 		try {
-			const { id, quantity } = req.body
+			const { id, quantity } = req.body;
 			const authHeader = req.headers.authorization;
 			const token = authHeader?.split(" ")[1];
 
 			if (!token) {
-				return res.status(401).json({ error: "Token inválido" });
+				return res.status(401).json({ error: "Acesso negado" });
 			}
 
 			const decoded = jwt.verify(token, jwtConfig.secret) as CustomJwtPayload;
-       
+
 			let verifyCart = await prisma.cart.findFirst({
 				where: {
 					userId: decoded.id,
 				},
 			});
-	
+
 			if (!verifyCart) {
 				verifyCart = await prisma.cart.create({
 					data: {
@@ -35,48 +35,68 @@ class CartsController {
 				data: {
 					cartId: verifyCart.id,
 					produtosId: id,
-					quantity
+					quantity,
 				},
 			});
 
-			console.log(createProductCart)
-
 			res.status(200).json({ createProductCart });
 		} catch (error) {
-			console.log(error)
 			res.status(400).json({ error: "Falha ao adicionar ao carrinho" });
 		}
 	}
 
 	async list(req: Request, res: Response) {
 		try {
-      const authHeader = req.headers.authorization;
+			const authHeader = req.headers.authorization;
 			const token = authHeader?.split(" ")[1];
 
 			if (!token) {
-				return res.status(401).json({ error: "Token inválido" });
+				return res.status(401).json({ error: "Acesso negado" });
 			}
 
 			const decoded = jwt.verify(token, jwtConfig.secret) as CustomJwtPayload;
-      
-      const itensList = await prisma.cart.findMany({
+
+			const itensList = await prisma.cart.findMany({
 				where: { userId: decoded.id },
-				include : {
+				include: {
 					items: {
-           include: {
-						produtos: true,
-					 }
-					}
-				}
-			})
-			console.log(itensList)
-     res.status(200).json({ itensList })
+						include: {
+							produtos: true,
+						},
+					},
+				},
+			});
+			res.status(200).json({ itensList });
 		} catch (error) {
 			res.status(400).json({ error: "Falha ao listar carrinho" });
 		}
 	}
 
-	async delete(req: Request, res: Response) {}
+	async delete(req: Request, res: Response) {
+		try {
+      const { id } = req.params;
+
+			const authHeader = req.headers.authorization;
+			const token = authHeader?.split(" ")[1];
+
+			if (!token) {
+				return res.status(401).json({ error: "Acesso negado" });
+			}
+
+			const decoded = jwt.verify(token, jwtConfig.secret) as CustomJwtPayload;
+      
+			await prisma.cartItem.delete({
+			 where: {
+				id: id
+			 }
+			})
+
+      res.status(200).json({ "sucesso!": "Produto deletado" })
+		} catch (error) {
+			console.log(error)
+			res.status(400).json({ error: "Falha ao deletar produto" });
+		}
+	}
 }
 
 export { CartsController };

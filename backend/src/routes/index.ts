@@ -30,7 +30,7 @@ route.get("/produtos/find/:id", AuthMiddleWare, Produtos.find);
 //carrinho
 route.post("/cart/create", AuthMiddleWare, Carts.create);
 route.get("/cart/list", AuthMiddleWare, Carts.list);
-route.delete("/cart/delete", AuthMiddleWare, Carts.delete);
+route.delete("/cart/delete/:id", AuthMiddleWare, Carts.delete);
 
 //favoritos
 route.get("/favorito/list", AuthMiddleWare, Favorito.list);

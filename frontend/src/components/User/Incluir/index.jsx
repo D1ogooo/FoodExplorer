@@ -37,7 +37,7 @@ export const InspectValue = ({ cartId }) => {
 
  return (
   <>
-   {stateToast && <Toast />}
+   {stateToast && <Toast message={"Produto adiconado ao carrinho!"}/>}
    <Container>
     <div style={{ display: "flex", gap: ".8rem", alignItems:"center", justifyContent: "center" }}>
      <button type="button" id='increment' onClick={() => dispatch({type: 'Decrement'})}>

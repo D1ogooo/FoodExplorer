@@ -24,13 +24,8 @@ function Pedidos() {
 
 	useEffect(() => {
 		api
-			.get("/cart/list")
+			.get('/cart/list')
 			.then((res) => {
-				// setData(res.data.itensList.map((e) => (
-				// 	e.items.map((a) => {
-				// 		console.log(a.produtos)
-				// 	})
-				// )))
 				setData(res.data.itensList.map((item) => item));
 			})
 			.catch((e) => {
@@ -45,6 +40,16 @@ function Pedidos() {
 			navigate("/");
 		}, 2500);
 	}
+  
+	function handleDelete(id) {
+   api.delete(`/cart/delete/${id}`)
+	 .then(() => {
+    handleToast()
+	 })
+	 .catch((e) => {
+		alert(e)
+	 })
+	}
 
 	const [image, setImage] = useState(false);
 	function handleImage(id) {
@@ -56,10 +61,9 @@ function Pedidos() {
 		setOutput(JSON.stringify(data, null, 2));
 	}
 
-	console.log(data);
 	return (
 		<>
-			{stateToast && <Toast />}
+		 {stateToast && <Toast message={"Produto deletado"}/>}
 			<Container>
 				<Pai>
 					<Left>
@@ -79,7 +83,9 @@ function Pedidos() {
 												{item.quantity} x {item.produtos?.name || "Produto"}
 											</p>
 											<div>
-												<ButtonExcluir>Excluir</ButtonExcluir>
+												<ButtonExcluir onClick={() => handleDelete(item.id)}>
+												 Excluir
+											  </ButtonExcluir>
 											</div>
 										</Second>
 										<span>R$ {item.produtos?.valor?.toFixed(2) || "0.00"}</span>

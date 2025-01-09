@@ -16,6 +16,7 @@ export const Pai = styled.section`
 `
 
 export const Left = styled.section`
+width: 30rem;
  margin-top: 2.125rem;
  margin-bottom: 2rem;
  h1 {
@@ -96,7 +97,7 @@ export const Card = styled.div`
  gap: 13px;
 
  :nth-child(3) {
-  margin-top: 0.325rem;
+  margin-top: .325rem;
   color: ${({theme}) => theme.colors.Light.light300};
   font-family: 'Roboto', sans-serif;
   font-size: 15px;
@@ -202,7 +203,7 @@ export const Form = styled.form`
   background: ${({theme}) => theme.colors.Tints.tomato100};
   color: ${({theme}) => theme.colors.Light.light100};
   text-align: center;
-  font-size: 0.875rem;
+  font-size: .875rem;
   font-style: normal;
   font-weight: 500;
   line-height: 171.429%;
