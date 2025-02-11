@@ -8,55 +8,61 @@ import { useNavigate } from "react-router-dom";
 
 function Favoritos() {
 	const [data, setData] = useState([]);
-  const [stateToast, setStateToast] = useState(false)
-  const navigate = useNavigate()
+	const [stateToast, setStateToast] = useState(false);
+	const navigate = useNavigate();
 
-  function handleToast() {
-    setStateToast(true)
-    setTimeout(() => {
-      setStateToast(false)
-      navigate("/")
-    }, 2500)
-  }
+	function handleToast() {
+		setStateToast(true);
+		setTimeout(() => {
+			setStateToast(false);
+		}, 2500);
+	}
 
 	useEffect(() => {
 		api
 			.get("/favorito/list")
 			.then((data) => {
 				setData(data.data.favorites);
-				console.log(data.data.favorites);
+				// console.log(data.data.favorites);
 			})
 			.catch((error) => {
 				console.log(error);
 			});
 	}, []);
 
-	function handleDelete(id) {
-    api
-    .delete(`/favorito/delete/${id}`)
-    .then(() => {
-      handleToast()
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  }
+	function handleDelete(id, index) {
+		const updateItens = [...data]
+		updateItens.splice(index, 1)
+		setData(updateItens)
+
+		api
+			.delete(`/favorito/delete/${id}`)
+			.then(() => {
+				handleToast();
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	}
 
 	return (
 		<>
-		 {stateToast && <Toast />}
+			{stateToast && <Toast />}
 			<Container>
 				<Pai>
 					<h1>Meus favoritos</h1>
 					<PratosContent>
-						{data.map((prato) => (
+						{data.map((prato, index) => (
 							<Content key={prato.produtos.id}>
 								<Left>
 									<img src={prato.produtos.image} alt="" />
 								</Left>
 								<Right>
 									<h2>{prato.produtos.name}</h2>
-									<button type="button" onClick={() => handleDelete(prato.produtos.id)}>
+									<button
+										type="button"
+										onClick={() => handleDelete(prato.produtos.id, index)}
+									>
 										Remover dos Favoritos
 									</button>
 								</Right>

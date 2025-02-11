@@ -30,7 +30,7 @@ export const InspectValue = ({ cartId }) => {
   .then(() => {
    handleToast()
   })
-  .catch((error) => {
+  .catch(() => {
    alert("Produto já se encontra no carrinho")
   })
  }

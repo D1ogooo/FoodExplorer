@@ -18,25 +18,25 @@ class FavoritosController {
 			}
 
 			const decoded = jwt.verify(token, jwtConfig.secret) as JwtPayload;
-     
-      const existFavorite = await prisma.favorite.findUnique({
+
+			const existFavorite = await prisma.favorite.findUnique({
 				where: {
 					userId_produtosId: {
-					 userId: decoded.id,
-					 produtosId: id,
+						userId: decoded.id,
+						produtosId: id,
 					}
 				},
 			})
 
-			if(existFavorite) {
+			if (existFavorite) {
 				const favoriteUserDelete = await prisma.favorite.delete({
 					where: {
 						userId_produtosId: {
-						 userId: decoded.id,
-						 produtosId: id,
+							userId: decoded.id,
+							produtosId: id,
 						}
 					},
-				}); 
+				});
 			}
 
 			const favoriteUserCreate = await prisma.favorite.create({
@@ -44,7 +44,7 @@ class FavoritosController {
 					userId: decoded.id,
 					produtosId: id,
 				},
-			}); 
+			});
 			res.status(201).json({ "sucesso!": "produto adicionado aos favoritos" });
 		} catch (error) {
 			console.log(error)
@@ -69,11 +69,11 @@ class FavoritosController {
 			const favoriteUserDelete = await prisma.favorite.delete({
 				where: {
 					userId_produtosId: {
-					 userId: decoded.id,
-					 produtosId: id,
+						userId: decoded.id,
+						produtosId: id,
 					}
 				},
-			}); 
+			});
 			res.status(201).json({ "sucesso!": "produto adicionado aos favoritos" });
 		} catch (error) {
 			res.status(401).json({ error: "falha ao desfavoritar" });

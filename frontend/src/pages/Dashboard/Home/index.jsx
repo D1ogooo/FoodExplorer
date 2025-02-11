@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import { useAuth } from "../../../hooks/useAuth";
-import { useDebounceClick } from "../../../hooks/useDebounceClick";
 import { api } from "../../../services/api";
+import { useDebounceClick } from "../../../hooks/useDebounceClick";
 import { InspectValue } from "../../../components/User/Incluir";
 import LapisIcon from "../../../assets/icons/lapisIcon.svg";
 import {
@@ -12,6 +12,7 @@ import {
 	FordMainContainer,
 	ImagemPrato,
 } from "./style";
+import { Toast } from "../../../components/toast";
 import { CardPai, Card, FirstContentCard } from "./style";
 import { Left, Right, Pai } from "./style";
 import firstimageIcon from "../../../assets/images/pngegg 1.svg";
@@ -21,14 +22,16 @@ import CaretLeft from "../../../assets/icons/CaretLeft.svg";
 import CaretRight from "../../../assets/icons/CaretRight.svg";
 
 function Dashboard() {
+	const { role } = useAuth();
 	const [love, setLove] = useState(false);
 	const [favorite, setFavorite] = useState([]);
 	const [data, setData] = useState([]);
+	const [stateToast, setStateToast] = useState(false)
+	const [favoriteData, setFavoriteData] = useState([])
 	const cardPai = useRef(null);
 	const secondCardPai = useRef(null);
 	const thirdCardPai = useRef(null);
-	const { role } = useAuth();
-	const debounceClick = useDebounceClick(favoriteToggle);
+	// const debounceClick = useDebounceClick(favoriteToggle);
 
 	useEffect(() => {
 		api
@@ -39,7 +42,14 @@ function Dashboard() {
 			.catch((e) => {
 				console.log("Falha", e);
 				setData([]);
-			});
+			})
+		api.get("/favorito/list")
+			.then((res) => {
+				setFavoriteData(res.data)
+			})
+			.catch((e) => {
+				console.log("Falha", e)
+			})
 	}, []);
 
 	const filterRefeicoes = data.filter(
@@ -51,6 +61,13 @@ function Dashboard() {
 	const filterBebidas = data.filter(
 		(aliment) => aliment.categoria === "bebidas",
 	);
+    
+	function handleToast() {
+		setStateToast(true);
+		setTimeout(() => {
+			setStateToast(false);
+		}, 2500);
+	}
 
 	function handleLeftClick(e) {
 		if (cardPai.current) {
@@ -111,12 +128,14 @@ function Dashboard() {
 		// 	}
 		// 		return [...prevFavorite, id]; // Caso não esteja favoritado
 		// });
+
 		api
 			.post("/favorito/create", {
-				id: id,
+				id,
 			})
 			.then((res) => {
-				// console.log(res);
+				// alert(res.data)
+				handleToast()
 			})
 			.catch((error) => {
 				console.log(error);
@@ -172,8 +191,7 @@ function Dashboard() {
 												type="button"
 												onClick={(e) => {
 													e.preventDefault()
-													e.stopPropagation()
-													setLove(!love)
+													favoriteToggle(refeicoes.id)
 												}}
 											>
 												<img
@@ -188,7 +206,7 @@ function Dashboard() {
 									<h1>{refeicoes.name}</h1>
 									<p>{refeicoes.sobre}</p>
 									<h2>R$ {refeicoes.valor}</h2>
-									{role === "usuario" && <InspectValue cartId={refeicoes.id}/>}
+									{role === "usuario" && <InspectValue cartId={refeicoes.id} />}
 									<div style={{ width: "100%" }} />
 								</Card>
 							))}
@@ -224,9 +242,8 @@ function Dashboard() {
 											<button
 												type="button"
 												onClick={(e) => {
-													setLove(!love);
-													e.preventDefault();
-													// e.stopPropagation();
+													e.preventDefault()
+													favoriteToggle(sobremesas.id)
 												}}
 											>
 												<img alt="" src={love ? HeartCheio : Heart} />
@@ -271,9 +288,8 @@ function Dashboard() {
 											<button
 												type="button"
 												onClick={(e) => {
-													setLove(!love);
-													e.preventDefault();
-													// e.stopPropagation();
+													e.preventDefault()
+													favoriteToggle(bebidas.id)
 												}}
 											>
 												<img alt="" src={love ? HeartCheio : Heart} />

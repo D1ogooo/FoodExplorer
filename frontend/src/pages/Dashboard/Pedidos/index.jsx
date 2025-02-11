@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Toast } from "../../../components/toast";
@@ -18,9 +18,11 @@ const createUserFormSchema = z.object({});
 
 function Pedidos() {
 	const [stateToast, setStateToast] = useState(false);
-	const [output, setOutput] = useState("");
-	const navigate = useNavigate();
 	const [data, setData] = useState([]);
+	const [valueCard, setValueCard] = useState("")
+	const [output, setOutput] = useState("");
+	const cardInput = useRef();
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		api
@@ -33,22 +35,31 @@ function Pedidos() {
 			});
 	}, []);
 
+	function handleCard(e) {
+		let changeValue = e.target.value.replace(/\D/g, '');
+		let valueMuted = changeValue.replace(/(\d{4})(?=\d)/g, '$1 ');
+		// cardInput.current.value = valueMuted;
+	}
+
 	function handleToast() {
 		setStateToast(true);
 		setTimeout(() => {
 			setStateToast(false);
-			navigate("/");
 		}, 2500);
 	}
-  
-	function handleDelete(id) {
-   api.delete(`/cart/delete/${id}`)
-	 .then(() => {
-    handleToast()
-	 })
-	 .catch((e) => {
-		alert(e)
-	 })
+
+	function handleDelete(id, index) {
+		const updateItem = [...data]
+		updateItem.splice(index, 1)
+		setData(updateItem)
+
+		api.delete(`/cart/delete/${id}`)
+			.then(() => {
+				handleToast()
+			})
+			.catch((e) => {
+				alert(e)
+			})
 	}
 
 	const [image, setImage] = useState(false);
@@ -63,14 +74,14 @@ function Pedidos() {
 
 	return (
 		<>
-		 {stateToast && <Toast message={"Produto deletado"}/>}
+			{stateToast && <Toast message={"Produto deletado"} />}
 			<Container>
 				<Pai>
 					<Left>
 						<h1>Meu pedido</h1>
 						<CardContent>
 							{data.map((cart) =>
-								cart.items.map((item) => (
+								cart.items.map((item, index) => (
 									<Card key={item.id}>
 										<First>
 											<img
@@ -83,9 +94,9 @@ function Pedidos() {
 												{item.quantity} x {item.produtos?.name || "Produto"}
 											</p>
 											<div>
-												<ButtonExcluir onClick={() => handleDelete(item.id)}>
-												 Excluir
-											  </ButtonExcluir>
+												<ButtonExcluir onClick={() => handleDelete(item.id, index)}>
+													Excluir
+												</ButtonExcluir>
 											</div>
 										</Second>
 										<span>R$ {item.produtos?.valor?.toFixed(2) || "0.00"}</span>
@@ -120,8 +131,14 @@ function Pedidos() {
 											<input
 												type="text"
 												placeholder="0000 0000 0000 0000"
-												required
+												ref={cardInput}
+												// onChange={handleCard}
+												onChange={() => {
+													console.log("OI")
+												}}
+												maxLength="19"
 												{...register("credito")}
+												required
 											/>
 										</div>
 									</label>
@@ -144,6 +161,7 @@ function Pedidos() {
 												<input
 													type="text"
 													placeholder="000"
+													maxLength={3}
 													{...register("cvc_credito")}
 												/>
 											</div>

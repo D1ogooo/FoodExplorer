@@ -53,10 +53,10 @@ model CartItem {
 }
 
 model Favorite {
-  id         String    @id @default(uuid())
-  user       User      @relation(fields: [userId], references: [id])
+  id         String   @id @default(uuid())
+  user       User     @relation(fields: [userId], references: [id])
   userId     String
-  produtos   Produtos  @relation(fields: [produtosId], references: [id])
+  produtos   Produtos @relation(fields: [produtosId], references: [id])
   produtosId String
 
   @@unique([userId, produtosId])

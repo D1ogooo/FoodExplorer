@@ -8,13 +8,13 @@ import type { SinginRequest, SingUpRequest } from "../../@types/types";
 class UsersController {
 	async auth(req: Request<SinginRequest>, res: Response) {
 		const { email, password } = req.body;
-	  const emailExist = await prisma.user.findUnique({
+		const emailExist = await prisma.user.findUnique({
 			where: { email },
 		});
 
 		if (!emailExist) {
-      return res.status(404).json({ error: "Usuário não encontrado" });
-    }
+			return res.status(404).json({ error: "Usuário não encontrado" });
+		}
 
 		const correctPassword = await bcrypt.compare(password, emailExist.password);
 		if (!correctPassword) {

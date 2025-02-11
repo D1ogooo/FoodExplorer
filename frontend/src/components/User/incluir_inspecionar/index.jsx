@@ -10,15 +10,15 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 export const IncluirInspecionar = ({ valor }) => {
   const [stateToast, setStateToast] = useState(false)
-  const navigate = useNavigate()
-  const { id } = useParams()
   const { dispatch, quantity } = useContext(CartContext)
+  const { id } = useParams()
+  const navigate = useNavigate()
   
   function handleToast() {
     setStateToast(true)
     setTimeout(() => {
       setStateToast(false)
-      navigate("/")
+      // navigate("/")
      }, 2500)
    }
 

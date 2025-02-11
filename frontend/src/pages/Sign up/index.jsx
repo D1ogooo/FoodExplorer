@@ -1,11 +1,11 @@
-import { useState } from "react"
+import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { api } from "../../services/api"
 import { Container, Left, Form, ReturnLogin } from "./style"
 import { Register } from "../Sign up/style"
 import iconfoodexplorer from '../../assets/icons/Polygon 1.svg'
 
-function SignIn() {
+function SignUp() {
   const [name, setName] = useState()
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
@@ -58,4 +58,4 @@ function SignIn() {
   )
 }
 
-export default SignIn
+export default SignUp

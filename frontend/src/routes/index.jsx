@@ -5,27 +5,21 @@ import { LoggedRouter } from "./logged.routes";
 import { AuthRouter } from "./auth.routes";
 
 export function Router() {
-  const { user } = useAuth();
-  const [loading, setLoading] = useState(true);
+	const { user } = useAuth();
+	const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const checkUser = () => {
-      setLoading(false);
-    };
+	useEffect(() => {
+		const checkUser = () => {
+			setLoading(false);
+		};
+		checkUser();
+	}, []);
 
-    checkUser();
-  }, []);
+	if (loading) {
+		return <div>Loading...</div>;
+	}
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  return (
-    <BrowserRouter>
-      {user ? <LoggedRouter /> : <AuthRouter />}
-    </BrowserRouter>
-    // <BrowserRouter>
-    //   <LoggedRouter />
-    // </BrowserRouter>
-  );
+	return (
+		<BrowserRouter>{user ? <LoggedRouter /> : <AuthRouter />}</BrowserRouter>
+	);
 }
