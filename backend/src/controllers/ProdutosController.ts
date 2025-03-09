@@ -12,15 +12,18 @@ class ProdutosController {
 
     try {
       const { name, valor, sobre, ingredientes, categoria } = req.body;
-      
-     if(!name || !valor || !sobre || !ingredientes || !categoria ) {
-      return res.status(400).json({ error: "é necessário declarar todos os dados"});
-     }
+      // const favoriteItem = await prisma.favorite.findUnique({
+
+      // });
+
+      if(!name || !valor || !sobre || !ingredientes || !categoria ) {
+       return res.status(400).json({ error: "é necessário declarar todos os dados"});
+      }
 
       if (!req.file) {
         return res.status(400).json({ error: "Imagem não fornecida" });
       }
-
+      
       const image = req.file.path;
       
       await prisma.produtos.create({

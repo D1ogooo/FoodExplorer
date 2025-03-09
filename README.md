@@ -26,6 +26,8 @@ como também para o restaurante uma agilidade na entrega de seus produtos.
 ```
 
        👩‍💻 -- Pendencias -- 👩‍💻
-* Integrar a pagina de favoritos
-* Integrar a pagina de pagamentos
+* Terminar de corrigir o backend de favoritos e optimizar
+* Terminar a pagina com todos os calculos de produtos
+* Construir a aba de edição de produtos no backend de integrar no frontend
+* Corrigir erro de contagem no frontend na parte de adicionar produto
 * Integrar a aba de detalhes do produto ✔

@@ -166,13 +166,15 @@ function Dashboard() {
 							<img src={CaretLeft} alt="" />
 						</button>
 						<CardPai ref={cardPai}>
+							
 							{filterRefeicoes.map((refeicoes) => (
 								<Card
-									key={refeicoes.id}
-									to={
+								key={refeicoes.id}
+								to={
 										role === "admin" ? "/editarPrato" : `/prato/${refeicoes.id}`
 									}
-								>
+									>
+								   {console.log(filterRefeicoes)}
 									<FirstContentCard>
 										<ImagemPrato
 											to={
@@ -194,10 +196,14 @@ function Dashboard() {
 													favoriteToggle(refeicoes.id)
 												}}
 											>
-												<img
+												{/* <img
 													src={
 														favorite.includes(refeicoes.id) ? HeartCheio : Heart
 													}
+													alt=""
+												/> */}
+												<img
+													src={refeicoes.favoriteItem ? HeartCheio : Heart}
 													alt=""
 												/>
 											</button>

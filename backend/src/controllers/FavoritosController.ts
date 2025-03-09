@@ -7,7 +7,6 @@ class FavoritosController {
 	async create(req: Request, res: Response) {
 		try {
 			const { id } = req.body;
-			console.log(id)
 
 			const authHeader = req.headers.authorization;
 			const token = authHeader?.split(" ")[1];
@@ -29,7 +28,7 @@ class FavoritosController {
 			})
 
 			if (existFavorite) {
-				const favoriteUserDelete = await prisma.favorite.delete({
+				await prisma.favorite.delete({
 					where: {
 						userId_produtosId: {
 							userId: decoded.id,
@@ -37,14 +36,42 @@ class FavoritosController {
 						}
 					},
 				});
+
+				const productExist = await prisma.produtos.findUnique({
+					where: {
+						id,
+					},
+				});
+
+				if(productExist) {
+					await prisma.produtos.update({
+						where: {
+							id
+						},
+						data: {
+							favoriteItem: productExist.favoriteItem === true ? false : true
+						},
+					});
+				}
+
 			}
 
-			const favoriteUserCreate = await prisma.favorite.create({
+			await prisma.favorite.create({
 				data: {
 					userId: decoded.id,
 					produtosId: id,
 				},
 			});
+
+			// await prisma.produtos.update({
+			// 	where: {
+			// 	 id
+			// 	},
+			// 	data: {
+            //      favoriteItem: favoriteItem === true ? false : true
+			// 	},
+			// });
+
 			res.status(201).json({ "sucesso!": "produto adicionado aos favoritos" });
 		} catch (error) {
 			console.log(error)

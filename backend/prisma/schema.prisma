@@ -27,6 +27,7 @@ model Produtos {
   image        String
   ingredientes String[]
   categoria    String
+  favoriteItem Boolean  @default(false)
 
   cartItems CartItem[]
   favorites Favorite[]
