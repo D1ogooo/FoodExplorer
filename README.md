@@ -22,7 +22,7 @@ como também para o restaurante uma agilidade na entrega de seus produtos.
 - Express
 - Prisma ORM
 - Neon (postgresql)
-- Cloudanary para armazenamento de imagens
+- Cloudnary para armazenamento de imagens
 ```
 
        👩‍💻 -- Pendencias -- 👩‍💻
