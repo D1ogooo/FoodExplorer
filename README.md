@@ -9,6 +9,7 @@ como também para o restaurante uma agilidade na entrega de seus produtos.
 👨‍💻 (frontend) Tecnologias Utilizadas:
 
 ```
+- vite
 - React
 - React-router-dom
 - Styled-components
