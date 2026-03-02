@@ -61,7 +61,7 @@ function Dashboard() {
 	const filterBebidas = data.filter(
 		(aliment) => aliment.categoria === "bebidas",
 	);
-    
+
 	function handleToast() {
 		setStateToast(true);
 		setTimeout(() => {
@@ -166,15 +166,14 @@ function Dashboard() {
 							<img src={CaretLeft} alt="" />
 						</button>
 						<CardPai ref={cardPai}>
-							
 							{filterRefeicoes.map((refeicoes) => (
 								<Card
-								key={refeicoes.id}
-								to={
+									key={refeicoes.id}
+									to={
 										role === "admin" ? "/editarPrato" : `/prato/${refeicoes.id}`
 									}
-									>
-								   {console.log(filterRefeicoes)}
+								>
+									{console.log(filterRefeicoes)}
 									<FirstContentCard>
 										<ImagemPrato
 											to={

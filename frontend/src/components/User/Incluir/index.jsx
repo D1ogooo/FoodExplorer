@@ -18,7 +18,6 @@ export const InspectValue = ({ cartId }) => {
    setStateToast(true)
    setTimeout(() => {
      setStateToast(false)
-     navigate("/")
     }, 2500)
   }
   

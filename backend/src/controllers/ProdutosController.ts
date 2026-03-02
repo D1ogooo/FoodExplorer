@@ -36,7 +36,6 @@ class ProdutosController {
           categoria,
         },
       });
-       console.log("Sucesso")
       res.status(201).json({ message: "Produto criado com sucesso!" });
 
     } catch (error) {

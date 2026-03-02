@@ -38,7 +38,6 @@ function Pedidos() {
   function handleCard(e) {
     let changeValue = e.target.value.replace(/\D/g, "");
     let valueMuted = changeValue.replace(/(\d{4})(?=\d)/g, "$1 ");
-    // cardInput.current.value = valueMuted;
   }
 
   function handleToast() {
@@ -48,10 +47,17 @@ function Pedidos() {
     }, 2500);
   }
 
-  function handleDelete(id, index) {
-    const updateItem = [...data];
-    updateItem.splice(index, 1);
-    setData(updateItem);
+  function handleDelete(id) {
+    const updatedData = data.map((cart) => ({
+      ...cart,
+      items: cart.items.filter((item) => item.id !== id)
+    }));
+
+    setData(updatedData)
+
+    setTimeout(() => {
+      setStateToast(false);
+    }, 2500);
 
     api
       .delete(`/cart/delete/${id}`)
@@ -102,8 +108,11 @@ function Pedidos() {
                 ))
               )}
             </CardContent>
-            <span className="totalValue">Total: R$ 103,88</span>
+            <span className="totalValue">
+              Total: R$ {data.map((cart) => cart.items.reduce((acc, atual) => acc + (atual.produtos?.valor?.toFixed(2) || 0) * atual.quantity, 0)).reduce((acc, total) => acc + total, 0).toFixed(2)}
+            </span>
           </Left>
+
           <Right>
             <h1>Pagamento</h1>
             <div>
