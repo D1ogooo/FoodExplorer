@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useMemo } from "react";
+import React, { useState, useEffect, useRef, useMemo, useContext } from "react";
 import { useAuth } from "../../../hooks/useAuth";
 import { api } from "../../../services/api";
 import { useDebounceClick } from "../../../hooks/useDebounceClick";
@@ -20,9 +20,12 @@ import Heart from "../../../assets/icons/Heart vazio.svg";
 import HeartCheio from "../../../assets/icons/Heart cheio.svg";
 import CaretLeft from "../../../assets/icons/CaretLeft.svg";
 import CaretRight from "../../../assets/icons/CaretRight.svg";
+import { ProductsContext } from '../../../contexts/ProductsContext.jsx'
 
 function Dashboard() {
 	const { role } = useAuth();
+	const { products, setProducts } = useContext(ProductsContext);
+
 	const [love, setLove] = useState(false);
 	const [favorite, setFavorite] = useState([]);
 	const [data, setData] = useState([]);
@@ -37,7 +40,8 @@ function Dashboard() {
 		api
 			.get("/produtos/show")
 			.then((res) => {
-				setData(res.data.products);
+			   setData(res.data.products)
+               setProducts(res.data.products)
 			})
 			.catch((e) => {
 				console.log("Falha", e);
@@ -53,15 +57,17 @@ function Dashboard() {
 	}, []);
 
   function getRoute(id) {
-  return role === "admin" ? `/editarPrato/${id}` : `/prato/${id}`;
-}
+    return role === "admin" ? `/editarPrato/${id}` : `/prato/${id}`;
+   }
 
 	const filterRefeicoes = data.filter(
 		(aliment) => aliment.categoria === "refeicao",
 	);
+
 	const filterSobremesas = data.filter(
 		(aliment) => aliment.categoria === "sobremesas",
 	);
+
 	const filterBebidas = data.filter(
 		(aliment) => aliment.categoria === "bebidas",
 	);

@@ -12,8 +12,6 @@ import { Left, Right } from "./style";
 import returnIcon from "../../../assets/icons/CaretLeft.svg";
 import { api } from "../../../services/api";
 import { useParams } from "react-router-dom";
-
-
 import { CSpinner } from "@coreui/react";
 import { Audio } from "react-loader-spinner";
 

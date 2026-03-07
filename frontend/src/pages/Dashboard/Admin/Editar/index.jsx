@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { api } from "../../../../services/api";
 
@@ -11,11 +11,12 @@ import IconClose from "../../../../assets/icons/Close.svg";
 import Marcacoes from "../../../../components/Admin/Marcacao";
 import returnIcon from "../../../../assets/icons/CaretLeft.svg";
 import UploadSimple from "../../../../assets/icons/UploadSimple.svg";
+import { ProductsContext } from '../../../../contexts/ProductsContext.jsx'
 
 function Editar() {
 	const { id } = useParams();
 	const navigate = useNavigate();
-
+   const { products, setProducts } = useContext(ProductsContext)
 	const [opcaoSelecionada, setOpcaoSelecionada] = useState("");
 	const [listaDeMarcadores, setListaDeMarcadores] = useState([]);
 	const [name, setName] = useState("");
@@ -38,7 +39,7 @@ function Editar() {
 
 	// 🔹 buscar produto quando abrir página
 useEffect(() => {
-
+   console.log(products)
 	if (!id) return;
 
 	async function fetchProduto() {
@@ -89,13 +90,13 @@ useEffect(() => {
 
 	// 🔹 deletar produto
 	async function handleDeletePrato() {
-
 		const confirmDelete = confirm("Deseja realmente excluir este prato?");
 
 		if (!confirmDelete) return;
 
 		try {
-
+            const updateDeleteProduct = [...products]
+            setProducts(updateDeleteProduct.splice(id, 1))
 			await api.delete(`/produtos/delete/${id}`);
 
 			alert("Produto deletado com sucesso!");
