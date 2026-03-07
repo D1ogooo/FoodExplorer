@@ -25,7 +25,8 @@ export default function Prato() {
 		api
 			.get(`/produtos/find/${id}`)
 			.then((res) => {
-				setData(res.data.findProduct);
+				console.log(res.data.findProduct)
+				setData(res.data);
 			})
 			.catch((e) => {
 				console.log("Falha", e);

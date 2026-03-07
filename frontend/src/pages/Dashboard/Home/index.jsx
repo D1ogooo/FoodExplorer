@@ -52,6 +52,10 @@ function Dashboard() {
 			})
 	}, []);
 
+  function getRoute(id) {
+  return role === "admin" ? `/editarPrato/${id}` : `/prato/${id}`;
+}
+
 	const filterRefeicoes = data.filter(
 		(aliment) => aliment.categoria === "refeicao",
 	);
@@ -166,18 +170,19 @@ function Dashboard() {
 							<img src={CaretLeft} alt="" />
 						</button>
 						<CardPai ref={cardPai}>
+
 							{filterRefeicoes.map((refeicoes) => (
 								<Card
 									key={refeicoes.id}
 									to={
-										role === "admin" ? "/editarPrato" : `/prato/${refeicoes.id}`
+										role === "admin" ? `/editarPrato/${refeicoes.id}` : `/prato/${refeicoes.id}`
 									}
 								>
 									<FirstContentCard>
 										<ImagemPrato
 											to={
 												role === "admin"
-													? "/editarPrato"
+													? `/editarPrato/${refeicoes.id}`
 													: `/prato/${refeicoes.id}`
 											}
 										>
@@ -194,12 +199,6 @@ function Dashboard() {
 													favoriteToggle(refeicoes.id)
 												}}
 											>
-												{/* <img
-													src={
-														favorite.includes(refeicoes.id) ? HeartCheio : Heart
-													}
-													alt=""
-												/> */}
 												<img
 													src={refeicoes.favoriteItem ? HeartCheio : Heart}
 													alt=""
@@ -236,10 +235,19 @@ function Dashboard() {
 							<img src={CaretLeft} alt="" />
 						</button>
 						<CardPai ref={secondCardPai}>
+
 							{filterSobremesas.map((sobremesas) => (
-								<Card key={sobremesas.id} to={`/prato/${sobremesas.id}`}>
+								<Card key={sobremesas.id} to={role === "admin" ? `/editarPrato/${sobremesas.id}` : `/prato/${sobremesas.id}`}>
 									<FirstContentCard>
-										<img src={sobremesas.image} id="prato" alt="" />
+										<ImagemPrato
+											to={
+												role === "admin"
+													? `/editarPrato/${sobremesas.id}`
+													: `/prato/${sobremesas.id}`
+											}
+										>
+											<img alt="" src={sobremesas.image} id="prato" />
+										</ImagemPrato>
 										{role === "admin" ? (
 											<img src={LapisIcon} alt="" />
 										) : (
@@ -282,10 +290,19 @@ function Dashboard() {
 							<img src={CaretLeft} alt="" />
 						</button>
 						<CardPai ref={thirdCardPai}>
+
 							{filterBebidas.map((bebidas) => (
-								<Card key={bebidas.id} to={`/prato/${bebidas.id}`}>
+								<Card key={bebidas.id} to={role === "admin" ? `/editarPrato/${bebidas.id}` : `/prato/${bebidas.id}`}>
 									<FirstContentCard>
-										<img src={bebidas.image} id="prato" alt="" />
+												<ImagemPrato
+											to={
+												role === "admin"
+													? `/editarPrato/${bebidas.id}`
+													: `/prato/${bebidas.id}`
+											}
+										>
+											<img alt="" src={bebidas.image} id="prato" />
+										</ImagemPrato>
 										{role === "admin" ? (
 											<img src={LapisIcon} alt="" />
 										) : (

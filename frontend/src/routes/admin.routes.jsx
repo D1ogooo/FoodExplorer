@@ -13,7 +13,7 @@ export function AdminRouter() {
         <Routes>
             <Route path="/" element={<DefaultLayout />}>
                 <Route index element={<Dashboard />} />
-                <Route path="/editarPrato" element={<Editar />} />
+                <Route path="/editarPrato/:id" element={<Editar />} />
                 <Route path="/adicionarPrato" element={<AdicionarPrato />} />
             </Route>
             <Route path="*" element={<Pagina_404 />} />
