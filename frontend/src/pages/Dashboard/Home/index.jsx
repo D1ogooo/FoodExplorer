@@ -173,7 +173,6 @@ function Dashboard() {
 										role === "admin" ? "/editarPrato" : `/prato/${refeicoes.id}`
 									}
 								>
-									{console.log(filterRefeicoes)}
 									<FirstContentCard>
 										<ImagemPrato
 											to={
@@ -258,7 +257,7 @@ function Dashboard() {
 									<h1>{sobremesas.name}</h1>
 									<p>{sobremesas.sobre}</p>
 									<h2>R$ {sobremesas.valor}</h2>
-									{role === "usuario" && <InspectValue />}
+									{role === "usuario" && <InspectValue cartId={sobremesas.id} />}
 								</Card>
 							))}
 						</CardPai>
@@ -304,7 +303,7 @@ function Dashboard() {
 									<h1>{bebidas.name}</h1>
 									<p>{bebidas.sobre}</p>
 									<h2>R$ {bebidas.valor}</h2>
-									{role === "usuario" && <InspectValue />}
+									{role === "usuario" && <InspectValue cartId={bebidas.id} />}
 								</Card>
 							))}
 						</CardPai>

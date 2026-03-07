@@ -11,7 +11,7 @@ export function useDebounceClick(click, delay = 500) {
     return () => {
       clearTimeout(timeoutFunction)
     };
-	}, [click, delay]);
+  }, [click, delay]);
 
   return debounceClick;
 }
