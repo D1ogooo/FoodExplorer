@@ -31,27 +31,37 @@ class UsersController {
 		res.status(200).json({ token, user });
 	}
 
-	async create(req: Request<SingUpRequest>, res: Response) {
-		const { name, email, password } = req.body;
+async create(req: Request<SingUpRequest>, res: Response) {
+	const { name, email, password } = req.body;
 
-		const userExists = await prisma.user.findUnique({
-			where: { email },
+	if (!name || !email || !password) {
+		return res.status(400).json({
+			error: "Nome, email e senha são obrigatórios"
 		});
-
-		if (userExists) {
-			return res
-				.status(401)
-				.json({ error: "O email declarado já se encontra em uso" });
-		}
-
-		const encryptedPassword = await bcrypt.hash(password, 8);
-
-		const createUser = await prisma.user.create({
-			data: { name, email, password: encryptedPassword },
-		});
-
-		res.status(200).json({ createUser });
 	}
+
+	const userExists = await prisma.user.findUnique({
+		where: { email },
+	});
+
+	if (userExists) {
+		return res.status(401).json({
+			error: "O email declarado já se encontra em uso"
+		});
+	}
+
+	const encryptedPassword = await bcrypt.hash(password, 8);
+
+	const createUser = await prisma.user.create({
+		data: {
+			name,
+			email,
+			password: encryptedPassword
+		},
+	});
+
+	res.status(200).json({ createUser });
+}
 }
 
 export { UsersController };

@@ -27,11 +27,13 @@ model Produtos {
   image        String
   ingredientes String[]
   categoria    String
+  imagePublicId String?  
   favoriteItem Boolean  @default(false)
 
   cartItems CartItem[]
   favorites Favorite[]
 }
+
 
 model Cart {
   id     String @id @default(uuid())

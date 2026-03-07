@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+
+  backend:
+    build: ./backend
+    ports:
+      - "3333:3333"
+    volumes:
+      - ./backend:/app
+    command: npm run dev
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+    command: npm run dev
+    depends_on:
+      - backend
