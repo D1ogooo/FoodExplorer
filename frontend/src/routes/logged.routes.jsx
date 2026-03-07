@@ -17,8 +17,6 @@ export function LoggedRouter() {
 				<Route path="/checkinPedidos" element={<Pedidos />} />
 				<Route path="/prato/:id" element={<Prato />} />
 				<Route path="/favoritos" element={<Favoritos />} />
-				<Route path="/editarPrato" element={<Editar />} /> 
-				<Route path="/adicionarPrato" element={<AdicionarPrato />} />
 			</Route>
 			<Route path="*" element={<Pagina_404 />} />
 		</Routes>

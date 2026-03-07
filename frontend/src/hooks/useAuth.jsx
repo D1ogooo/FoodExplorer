@@ -42,7 +42,7 @@ function AuthProvider({ children }) {
 	async function signup({ name, email, password }) {
 		try {
 			await api.post("/users/create", {
-				nome: name,
+				name,
 				email,
 				password,
 			});

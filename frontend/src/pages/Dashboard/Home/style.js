@@ -2,47 +2,59 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const Container = styled.div`
- width: 80%;
+ width: min(1200px, 90%);
  margin: 0 auto;
 `
 
 export const FirstMainComponent = styled.div`
  display: flex;
  align-items: center;
- justify-content: space-around;
+ justify-content: space-between;
  width: 100%;
- height: 16.25rem;
- margin-top: 10.25rem;
+ min-height: 16rem;
+ margin-top: 8rem;
  border-radius: .5rem;
- flex-shrink: 0;
- background: var(--Gradients-200, linear-gradient(180deg, #091E26 0%, #00131C 100%));
+ padding: 1.5rem;
+
+ background: linear-gradient(180deg, #091E26 0%, #00131C 100%);
+
+ @media (max-width: 768px) {
+  flex-direction: column;
+  text-align: center;
+  gap: 1rem;
+  padding: 1rem;
+ }
 `
 
 export const Left = styled.section`
  img {
-  margin-top: -8.875rem;
-  width: 39.5rem;
-  height: 25.375rem;
-  flex-shrink: 0;
+  width: clamp(180px, 35vw, 500px);
+  height: auto;
+  margin-top: -6rem;
+ }
+
+ @media (max-width: 768px) {
+  img {
+   margin-top: -4rem;
+  }
  }
 `
 
 export const Right = styled.section`
+ max-width: 420px;
+
  h1 {
-  width: 26.375rem;
   color: ${({ theme }) => theme.colors.Light.light300};
   font-family: 'Poppins', sans-serif;
-  font-size: 2.5rem;
-  font-style: normal;
+  font-size: clamp(1.4rem, 2.5vw, 2.5rem);
   font-weight: 500;
   line-height: 140%;
  }
 
  p {
-  width: 26.125rem;
   color: ${({ theme }) => theme.colors.Light.light300};
   font-family: 'Roboto', sans-serif;
-  font-size: 1rem;
+  font-size: clamp(.8rem, 1.5vw, 1rem);
   font-style: normal;
   font-weight: 400;
   line-height: 100%;
@@ -101,7 +113,6 @@ export const Pai = styled.section`
    border: none;
   }
 `
-
 export const ThirdMainContainer = styled.section`
   h1 {
    margin-top: 3.9375rem;
@@ -133,17 +144,14 @@ export const FordMainContainer = styled.section`
 export const CardPai = styled.div`
  display: flex;
  width: 100%;
- scroll-behavior: smooth;
- 
- overflow-x: auto;
- overflow: hidden;
- 
- align-items: start;
- justify-content: start;
- margin-bottom: 2.9375rem;
- gap: 27px;
+ gap: 1.5rem;
 
- h2 {
+ overflow-x: auto;
+ scroll-behavior: smooth;
+
+ padding-bottom: 1rem;
+
+  h2 {
   color: ${({ theme }) => theme.colors.Tints.cake200};
   text-align: center;
   font-family: 'Roboto', sans-serif;
@@ -152,57 +160,56 @@ export const CardPai = styled.div`
   font-weight: 400;
   line-height: 160%;
  }
+
+ &::-webkit-scrollbar {
+  display: none;
+ }
 `
 
 export const Card = styled.div`
-  & {
-    text-decoration: none;
-    cursor: pointer;
-  }
+ text-decoration: none;
+ cursor: pointer;
 
-  display: flex;
-  width: 19rem;
-  height: auto;
-  flex-direction: column;
-  text-align: center;
-  gap: .9375rem;
-  border-radius: .5rem;
-  background: ${({ theme }) => theme.colors.Dark.dark200};
-  border: .0625rem solid ${({ theme }) => theme.colors.Dark.dark300};
-  padding: 1rem;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
 
-  h1 {
-    margin-top: -0.0625rem;
-    color: ${({ theme }) => theme.colors.Light.light300};
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-    font-size: 22px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 33.6px;
-  }
+ min-width: 260px;
+ max-width: 260px;
 
-  p {
-    color: ${({ theme }) => theme.colors.Light.light400};
-    text-align: center;
-    font-family: 'Roboto', sans-serif;
-    font-size: 14px;
+ border-radius: .5rem;
+ background: ${({ theme }) => theme.colors.Dark.dark200};
+ border: .0625rem solid ${({ theme }) => theme.colors.Dark.dark300};
+
+ padding: 1rem;
+ gap: .75rem;
+
+ h1 {
+  color: ${({ theme }) => theme.colors.Light.light300};
+  font-family: 'Poppins';
+  font-size: 1.2rem;
+  font-weight: 600;
+ }
+
+ p {
+  color: ${({ theme }) => theme.colors.Light.light400};
+   font-family: 'Roboto', sans-serif;
+  font-size: .85rem;
     font-style: normal;
     font-weight: 400;
     line-height: 22.4px;
-  }
+    text-align: center;
+ }
 
-  img {
-    max-width: 100%; 
-    height: auto; 
-    flex-shrink: 0;
-    margin-bottom: 1rem; 
-  }
+ img {
+  width: 100%;
+  height: auto;
+ }
 
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  overflow: visible;
+ @media (max-width: 768px) {
+  min-width: 210px;
+  max-width: 210px;
+ }
 `
 
 export const FirstContentCard = styled(Link)`
