@@ -13,7 +13,7 @@ class UsersController {
 		});
 
 		if (!emailExist) {
-			return res.status(404).json({ error: "Usuário não encontrado" });
+			return res.status(404).json({ error: "Usuário não encontrado" })
 		}
 
 		const correctPassword = await bcrypt.compare(password, emailExist.password);
@@ -24,6 +24,7 @@ class UsersController {
 		const token = jwt.sign({ role: emailExist.role, id: emailExist.id }, jwtConfig.secret, {
 			expiresIn: jwtConfig.expiresIn,
 		});
+
 		const user = {
 			email: emailExist.email,
 			id: emailExist.id,
@@ -31,37 +32,37 @@ class UsersController {
 		res.status(200).json({ token, user });
 	}
 
-async create(req: Request<SingUpRequest>, res: Response) {
-	const { name, email, password } = req.body;
+	async create(req: Request<SingUpRequest>, res: Response) {
+		const { name, email, password } = req.body;
 
-	if (!name || !email || !password) {
-		return res.status(400).json({
-			error: "Nome, email e senha são obrigatórios"
+		if (!name || !email || !password) {
+			return res.status(400).json({
+				error: "Nome, email e senha são obrigatórios"
+			});
+		}
+
+		const userExists = await prisma.user.findUnique({
+			where: { email },
 		});
-	}
 
-	const userExists = await prisma.user.findUnique({
-		where: { email },
-	});
+		if (userExists) {
+			return res.status(401).json({
+				error: "O email declarado já se encontra em uso"
+			});
+		}
 
-	if (userExists) {
-		return res.status(401).json({
-			error: "O email declarado já se encontra em uso"
+		const encryptedPassword = await bcrypt.hash(password, 8);
+
+		const createUser = await prisma.user.create({
+			data: {
+				name,
+				email,
+				password: encryptedPassword
+			},
 		});
+
+		res.status(200).json({ createUser });
 	}
-
-	const encryptedPassword = await bcrypt.hash(password, 8);
-
-	const createUser = await prisma.user.create({
-		data: {
-			name,
-			email,
-			password: encryptedPassword
-		},
-	});
-
-	res.status(200).json({ createUser });
-}
 }
 
 export { UsersController };

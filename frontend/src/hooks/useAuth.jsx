@@ -30,7 +30,6 @@ function AuthProvider({ children }) {
 
 			localStorage.setItem("@FoodExplorer:user", JSON.stringify(user));
 			localStorage.setItem("@FoodExplorer:token", token);
-
 			api.defaults.headers.authorization = `Bearer ${token}`;
 			setData({ user, token });
 		} catch (error) {

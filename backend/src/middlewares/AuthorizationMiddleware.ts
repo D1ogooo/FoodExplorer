@@ -1,4 +1,4 @@
-import jwt, { JwtPayload, verify } from "jsonwebtoken";
+import jwt, { JwtPayload } from "jsonwebtoken";
 import { jwtConfig } from "../configs/auth";
 import type { Request, Response, NextFunction } from "express";
 
@@ -13,7 +13,9 @@ function AuthorizationMiddleWare(req: Request, res: Response, next: NextFunction
 
         if (verify.role === "admin") {
             next();
-        } 
+        } else {
+			return res.status(401).json({ error: "Acesso negado" });
+		}
 	} catch (error) {
 		return res.status(401).json({ error: "Acesso negado" });
 	}

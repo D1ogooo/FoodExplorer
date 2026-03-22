@@ -3,9 +3,7 @@ import type { Response, Request } from "express";
 import { v2 as cloudinary } from "cloudinary";
 
 class ProdutosController {
-
   async create(req: Request, res: Response) {
-
     try {
       const { name, valor, sobre, ingredientes, categoria } = req.body;
 
@@ -153,7 +151,6 @@ class ProdutosController {
       let imagePublicId = product.imagePublicId;
 
       if (req.file) {
-
         if (product.imagePublicId) {
           await cloudinary.uploader.destroy(product.imagePublicId);
         }
@@ -184,10 +181,11 @@ class ProdutosController {
 
     } catch (error) {
 
-      console.error(error);
+      // console.error(error);
 
       return res.status(500).json({
-        error: "Erro ao atualizar produto"
+        error: "Erro ao atualizar produto",
+        message: error
       });
 
     }

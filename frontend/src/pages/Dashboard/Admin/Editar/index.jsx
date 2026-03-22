@@ -43,7 +43,7 @@ useEffect(() => {
 	if (!id) return;
 
 	async function fetchProduto() {
-		const response = await api.get(`/produtos/${id}`);
+		const response = await api.get(`/produtos/find/${id}`);
 
 		const produto = response.data;
 

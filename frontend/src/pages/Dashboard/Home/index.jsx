@@ -26,19 +26,17 @@ function Dashboard() {
 	const { role } = useAuth();
 	const { products, setProducts } = useContext(ProductsContext);
 
-	const [love, setLove] = useState(false);
-	const [favorite, setFavorite] = useState([]);
 	const [data, setData] = useState([]);
 	const [stateToast, setStateToast] = useState(false)
 	const [favoriteData, setFavoriteData] = useState([])
+	const [favoriteIds, setFavoriteIds] = useState([])
 	const cardPai = useRef(null);
 	const secondCardPai = useRef(null);
 	const thirdCardPai = useRef(null);
 	// const debounceClick = useDebounceClick(favoriteToggle);
 
 	useEffect(() => {
-		api
-			.get("/produtos/show")
+		api.get("/produtos/show")
 			.then((res) => {
 			   setData(res.data.products)
                setProducts(res.data.products)
@@ -49,7 +47,8 @@ function Dashboard() {
 			})
 		api.get("/favorito/list")
 			.then((res) => {
-				setFavoriteData(res.data)
+				setFavoriteData(res.data.favorites)
+				setFavoriteIds(res.data.favorites.map(fav => fav.produtosId))
 			})
 			.catch((e) => {
 				console.log("Falha", e)
@@ -121,35 +120,37 @@ function Dashboard() {
 		}
 	}
 
-	// async function favoriteToggle(id) {
-	// 	setFavorite((prevFavorite) => {
-	// 		if(prevFavorite.includes(id)) { // Caso já esteja favoritado
-	// 			return prevFavorite.filter((favoritoId) => (favoritoId !== id))
-
-	// 		}
-	// 			return [...prevFavorite, id]; // Caso não esteja favoritado
-	// 	});
-	// }
-
 	function favoriteToggle(id) {
-		// setFavorite((prevFavorite) => {
-		// 	if(prevFavorite.includes(id)) { // Caso já esteja favoritado
-		// 		return prevFavorite.filter((favoritoId) => (favoritoId !== id))
-		// 	}
-		// 		return [...prevFavorite, id]; // Caso não esteja favoritado
-		// });
+		// Toggle local state immediately
+		const wasFavorited = favoriteIds.includes(id);
+		setFavoriteIds(prev => wasFavorited ? prev.filter(i => i !== id) : [...prev, id]);
+
+		handleToast();
 
 		api
 			.post("/favorito/create", {
 				id,
 			})
 			.then((res) => {
-				// alert(res.data)
-				handleToast()
+				// Refetch favorites after toggle
+				api.get("/favorito/list")
+					.then((res) => {
+						setFavoriteData(res.data.favorites);
+						setFavoriteIds(res.data.favorites.map(fav => fav.produtosId));
+					})
+					.catch((e) => {
+						console.log("Falha ao atualizar favoritos", e);
+					});
 			})
 			.catch((error) => {
 				console.log(error);
+				// Revert local state on error
+				setFavoriteIds(prev => wasFavorited ? [...prev, id] : prev.filter(i => i !== id));
 			});
+	}
+
+	function isFavorited(id) {
+		return favoriteIds && favoriteIds.includes(id);
 	}
 
 	return (
@@ -206,7 +207,7 @@ function Dashboard() {
 												}}
 											>
 												<img
-													src={refeicoes.favoriteItem ? HeartCheio : Heart}
+													src={isFavorited(refeicoes.id) ? HeartCheio : Heart}
 													alt=""
 												/>
 											</button>
@@ -264,7 +265,7 @@ function Dashboard() {
 													favoriteToggle(sobremesas.id)
 												}}
 											>
-												<img alt="" src={love ? HeartCheio : Heart} />
+												<img alt="" src={isFavorited(sobremesas.id) ? HeartCheio : Heart} />
 											</button>
 										)}
 									</FirstContentCard>
@@ -319,7 +320,7 @@ function Dashboard() {
 													favoriteToggle(bebidas.id)
 												}}
 											>
-												<img alt="" src={love ? HeartCheio : Heart} />
+												<img alt="" src={isFavorited(bebidas.id) ? HeartCheio : Heart} />
 											</button>
 										)}
 									</FirstContentCard>

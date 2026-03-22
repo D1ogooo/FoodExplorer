@@ -9,7 +9,6 @@ import Marcacoes from "../../../../components/Admin/Marcacao";
 import returnIcon from "../../../../assets/icons/CaretLeft.svg";
 import UploadSimple from "../../../../assets/icons/UploadSimple.svg";
 
-
 function AdicionarPrato() {
   const [stateToast, setStateToast] = useState(false)
   const [opcaoSelecionada, setOpcaoSelecionada] = useState("");
